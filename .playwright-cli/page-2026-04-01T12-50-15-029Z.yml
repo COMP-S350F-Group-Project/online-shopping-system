@@ -1,0 +1,80 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - link "Velora" [ref=e6] [cursor=pointer]:
+            - /url: /zh-Hant
+          - navigation [ref=e7]:
+            - link "首頁" [ref=e8] [cursor=pointer]:
+              - /url: /zh-Hant
+            - link "選購" [ref=e9] [cursor=pointer]:
+              - /url: /zh-Hant/shop
+            - link "優惠活動" [ref=e10] [cursor=pointer]:
+              - /url: /zh-Hant/offers
+            - link "品牌故事" [ref=e11] [cursor=pointer]:
+              - /url: /zh-Hant/about
+            - link "支援中心" [ref=e12] [cursor=pointer]:
+              - /url: /zh-Hant/help
+        - generic [ref=e13]:
+          - generic [ref=e14]:
+            - img [ref=e15]
+            - button "EN" [ref=e19]
+            - button "繁中" [ref=e20]
+          - link "3" [ref=e21] [cursor=pointer]:
+            - /url: /zh-Hant/wishlist
+            - img [ref=e22]
+            - generic [ref=e24]: "3"
+          - link [ref=e25] [cursor=pointer]:
+            - /url: /zh-Hant/account
+            - img [ref=e26]
+          - button "購物袋" [ref=e29]:
+            - img [ref=e30]
+    - main [ref=e33]:
+      - generic [ref=e34]:
+        - generic [ref=e35]:
+          - paragraph [ref=e36]: 結帳流程
+          - heading "安全結帳" [level=2] [ref=e37]
+          - paragraph [ref=e38]: 以簡潔而可信的流程完成配送、付款與訂單確認。
+        - generic [ref=e40]:
+          - heading "尚未有可結帳商品" [level=2] [ref=e41]
+          - paragraph [ref=e42]: 你的購物袋目前沒有商品，請先加入想購買的內容後再進行結帳。
+          - generic [ref=e43]:
+            - link "前往選購" [ref=e44] [cursor=pointer]:
+              - /url: /zh-Hant/shop
+            - link "返回購物袋" [ref=e45] [cursor=pointer]:
+              - /url: /zh-Hant/cart
+    - contentinfo [ref=e46]:
+      - generic [ref=e47]:
+        - generic [ref=e48]:
+          - paragraph [ref=e49]: Velora
+          - paragraph [ref=e50]: 來自香港的精緻音訊、隨行收納與智慧生活器物。
+        - generic [ref=e51]:
+          - paragraph [ref=e52]: 選購
+          - generic [ref=e53]:
+            - link "全部商品" [ref=e54] [cursor=pointer]:
+              - /url: /zh-Hant/shop
+            - link "優惠活動" [ref=e55] [cursor=pointer]:
+              - /url: /zh-Hant/offers
+            - link "收藏清單" [ref=e56] [cursor=pointer]:
+              - /url: /zh-Hant/wishlist
+        - generic [ref=e57]:
+          - paragraph [ref=e58]: 服務
+          - generic [ref=e59]:
+            - link "訂單追蹤" [ref=e60] [cursor=pointer]:
+              - /url: /zh-Hant/account/tracking
+            - link "支援中心" [ref=e61] [cursor=pointer]:
+              - /url: /zh-Hant/help
+            - link "聯絡我們" [ref=e62] [cursor=pointer]:
+              - /url: /zh-Hant/contact
+        - generic [ref=e63]:
+          - paragraph [ref=e64]: 品牌
+          - generic [ref=e65]:
+            - link "關於 Velora" [ref=e66] [cursor=pointer]:
+              - /url: /zh-Hant/about
+            - link "會員中心" [ref=e67] [cursor=pointer]:
+              - /url: /zh-Hant/account
+            - link "營運後台" [ref=e68] [cursor=pointer]:
+              - /url: /zh-Hant/admin
+  - region "Notifications alt+T"
+  - alert [ref=e69]

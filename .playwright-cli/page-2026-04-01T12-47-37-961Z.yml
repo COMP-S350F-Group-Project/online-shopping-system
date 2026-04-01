@@ -1,0 +1,239 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - link "Velora" [ref=e6] [cursor=pointer]:
+            - /url: /en
+          - navigation [ref=e7]:
+            - link "Home" [ref=e8] [cursor=pointer]:
+              - /url: /en
+            - link "Shop" [ref=e9] [cursor=pointer]:
+              - /url: /en/shop
+            - link "Offers" [ref=e10] [cursor=pointer]:
+              - /url: /en/offers
+            - link "About" [ref=e11] [cursor=pointer]:
+              - /url: /en/about
+            - link "Support" [ref=e12] [cursor=pointer]:
+              - /url: /en/help
+        - generic [ref=e13]:
+          - generic [ref=e14]:
+            - img [ref=e15]
+            - button "EN" [ref=e19]
+            - button "繁中" [ref=e20]
+          - link "3" [ref=e21] [cursor=pointer]:
+            - /url: /en/wishlist
+            - img [ref=e22]
+            - generic [ref=e24]: "3"
+          - link [ref=e25] [cursor=pointer]:
+            - /url: /en/account
+            - img [ref=e26]
+          - button "Bag" [ref=e29]:
+            - img [ref=e30]
+            - generic [ref=e33]: "2"
+    - main [ref=e34]:
+      - generic [ref=e35]:
+        - generic [ref=e36]:
+          - paragraph [ref=e37]: Checkout
+          - heading "Secure checkout" [level=2] [ref=e38]
+          - paragraph [ref=e39]: Complete delivery, payment, and review in a streamlined checkout flow.
+        - generic [ref=e40]:
+          - generic [ref=e41]:
+            - generic [ref=e42]:
+              - generic [ref=e43]:
+                - img [ref=e44]
+                - paragraph [ref=e48]: Encrypted payment
+                - paragraph [ref=e49]: Payment details are reviewed in one secure step before the order is confirmed.
+              - generic [ref=e50]:
+                - img [ref=e51]
+                - paragraph [ref=e54]: Clear delivery promise
+                - paragraph [ref=e55]: Every checkout shows the expected timing and the next handoff rhythm before you place the order.
+              - generic [ref=e56]:
+                - img [ref=e57]
+                - paragraph [ref=e62]: Aftercare included
+                - paragraph [ref=e63]: Returns, replacements, and gifting adjustments remain supported after purchase.
+            - generic [ref=e64]:
+              - generic [ref=e65]:
+                - heading "Contact details" [level=2] [ref=e66]
+                - paragraph [ref=e67]: Order confirmation, delivery milestones, and service updates will be sent to these details.
+              - generic [ref=e68]:
+                - generic [ref=e69]:
+                  - generic [ref=e70]: First name
+                  - textbox "First name" [ref=e71]: Evelyn
+                - generic [ref=e72]:
+                  - generic [ref=e73]: Last name
+                  - textbox "Last name" [ref=e74]: Lau
+                - generic [ref=e75]:
+                  - generic [ref=e76]: Email address
+                  - textbox "Email address" [ref=e77]: evelyn@private-mail.com
+                - generic [ref=e78]:
+                  - generic [ref=e79]: Phone
+                  - textbox "Phone" [ref=e80]: +852 6123 4568
+            - generic [ref=e81]:
+              - generic [ref=e82]:
+                - heading "Delivery method" [level=2] [ref=e83]
+                - paragraph [ref=e84]: Select the delivery rhythm that best fits this order and the final handoff.
+              - generic [ref=e85]:
+                - button "Complimentary delivery Arrives in 2 to 4 business days Free Handled through Velora’s standard courier network with full milestone updates." [ref=e86]:
+                  - generic [ref=e87]:
+                    - generic [ref=e88]:
+                      - paragraph [ref=e89]: Complimentary delivery
+                      - paragraph [ref=e90]: Arrives in 2 to 4 business days
+                    - paragraph [ref=e91]: Free
+                  - paragraph [ref=e92]: Handled through Velora’s standard courier network with full milestone updates.
+                - button "Express courier Priority arrival in 1 to 2 business days HK$90 Priority handling with tighter handoff windows for time-sensitive orders." [ref=e93]:
+                  - generic [ref=e94]:
+                    - generic [ref=e95]:
+                      - paragraph [ref=e96]: Express courier
+                      - paragraph [ref=e97]: Priority arrival in 1 to 2 business days
+                    - paragraph [ref=e98]: HK$90
+                  - paragraph [ref=e99]: Priority handling with tighter handoff windows for time-sensitive orders.
+                - button "Studio pickup Ready within 24 hours Free Collect from the Velora studio with a reserved pickup window and gift inspection." [ref=e100]:
+                  - generic [ref=e101]:
+                    - generic [ref=e102]:
+                      - paragraph [ref=e103]: Studio pickup
+                      - paragraph [ref=e104]: Ready within 24 hours
+                    - paragraph [ref=e105]: Free
+                  - paragraph [ref=e106]: Collect from the Velora studio with a reserved pickup window and gift inspection.
+            - generic [ref=e107]:
+              - generic [ref=e108]:
+                - heading "Shipping address" [level=2] [ref=e109]
+                - paragraph [ref=e110]: Use the destination where you would like Velora to hand off the order or arrange collection.
+              - generic [ref=e111]:
+                - generic [ref=e112]:
+                  - generic [ref=e113]: Address line 1
+                  - textbox "Address line 1" [ref=e114]: Tower 3, 39 Conduit Road
+                - generic [ref=e115]:
+                  - generic [ref=e116]: Address line 2
+                  - textbox "Address line 2" [ref=e117]: Mid-Levels West
+                - generic [ref=e118]:
+                  - generic [ref=e119]: City
+                  - textbox "City" [ref=e120]: Hong Kong
+                - generic [ref=e121]:
+                  - generic [ref=e122]: Region
+                  - textbox "Region" [ref=e123]: Hong Kong Island
+                - generic [ref=e124]:
+                  - generic [ref=e125]: Postal code
+                  - textbox "Postal code" [ref=e126]:
+                    - /placeholder: Optional
+                - generic [ref=e127]:
+                  - generic [ref=e128]: Country or region
+                  - textbox "Country or region" [ref=e129]: Hong Kong SAR
+                - generic [ref=e130]:
+                  - generic [ref=e131]: Delivery notes
+                  - textbox "Delivery notes" [ref=e132]:
+                    - /placeholder: Share building access notes, concierge details, or gifting requests.
+            - generic [ref=e133]:
+              - generic [ref=e134]:
+                - heading "Payment" [level=2] [ref=e135]
+                - paragraph [ref=e136]: Choose a saved card or add another payment method for this order.
+              - generic [ref=e137]:
+                - button "Saved card Visa ending 0488 Use the preferred card on file for a faster, lower-friction checkout." [ref=e138]:
+                  - generic [ref=e139]:
+                    - generic [ref=e140]:
+                      - paragraph [ref=e141]: Saved card
+                      - paragraph [ref=e142]: Visa ending 0488
+                    - img [ref=e143]
+                  - paragraph [ref=e145]: Use the preferred card on file for a faster, lower-friction checkout.
+                - button "Use another card Add a different card for this order without changing your saved preference." [ref=e146]:
+                  - generic [ref=e147]:
+                    - generic [ref=e148]:
+                      - paragraph [ref=e149]: Use another card
+                      - paragraph [ref=e150]: Add a different card for this order without changing your saved preference.
+                    - img [ref=e151]
+              - generic [ref=e155]:
+                - generic [ref=e156]:
+                  - paragraph [ref=e157]: Visa ending 0488
+                  - paragraph [ref=e158]: Enter the security code to re-confirm this payment method for the order.
+                - generic [ref=e159]:
+                  - generic [ref=e160]: CVC
+                  - textbox "CVC" [ref=e161]: "482"
+            - generic [ref=e162]:
+              - generic [ref=e163]:
+                - heading "Review before placing the order" [level=2] [ref=e164]
+                - paragraph [ref=e165]: One final check of delivery and contact details before payment is authorized.
+              - generic [ref=e166]:
+                - generic [ref=e167]:
+                  - paragraph [ref=e168]: Confirmation contact
+                  - paragraph [ref=e169]: Email address
+                  - paragraph [ref=e170]: Order confirmation, payment updates, and shipping milestones will follow the contact details above.
+                - generic [ref=e171]:
+                  - paragraph [ref=e172]: Delivery rhythm
+                  - paragraph [ref=e173]: Complimentary delivery
+                  - paragraph [ref=e174]: Arrives in 2 to 4 business days
+          - complementary [ref=e175]:
+            - generic [ref=e177]:
+              - generic [ref=e178]:
+                - heading "Order summary" [level=2] [ref=e179]
+                - paragraph [ref=e180]: 2 items
+              - generic [ref=e181]:
+                - generic [ref=e183]:
+                  - generic [ref=e184]:
+                    - paragraph [ref=e185]: Arc One Headphones
+                    - paragraph [ref=e186]: Obsidian · Standard
+                    - paragraph [ref=e187]: × 1
+                  - paragraph [ref=e188]: HK$3,290
+                - generic [ref=e190]:
+                  - generic [ref=e191]:
+                    - paragraph [ref=e192]: Studio Dock 140
+                    - paragraph [ref=e193]: Graphite · Hong Kong
+                    - paragraph [ref=e194]: × 1
+                  - paragraph [ref=e195]: HK$980
+              - generic [ref=e196]:
+                - paragraph [ref=e197]: Complimentary delivery
+                - paragraph [ref=e198]: Arrives in 2 to 4 business days
+                - paragraph [ref=e199]: Handled through Velora’s standard courier network with full milestone updates.
+              - generic [ref=e200]:
+                - generic [ref=e201]:
+                  - generic [ref=e202]: Subtotal
+                  - generic [ref=e203]: HK$4,270
+                - generic [ref=e204]:
+                  - generic [ref=e205]: Discount
+                  - generic [ref=e206]: "-HK$427"
+                - generic [ref=e207]:
+                  - generic [ref=e208]: Shipping
+                  - generic [ref=e209]: —
+                - generic [ref=e210]:
+                  - generic [ref=e211]: Duties & taxes
+                  - generic [ref=e212]: HK$115
+              - generic [ref=e213]:
+                - generic [ref=e214]: Total
+                - generic [ref=e215]: HK$3,958
+              - generic [ref=e216]:
+                - paragraph [ref=e217]: Protected review
+                - paragraph [ref=e218]: Taxes, shipping upgrades, and order totals are confirmed before payment is authorized.
+              - button "Place order" [ref=e219]
+              - paragraph [ref=e220]: By placing the order, you confirm the delivery details and authorize payment for the total shown.
+    - contentinfo [ref=e221]:
+      - generic [ref=e222]:
+        - generic [ref=e223]:
+          - paragraph [ref=e224]: Velora
+          - paragraph [ref=e225]: Precision-crafted audio, carry, and smart-living essentials from Hong Kong.
+        - generic [ref=e226]:
+          - paragraph [ref=e227]: Shop
+          - generic [ref=e228]:
+            - link "All products" [ref=e229] [cursor=pointer]:
+              - /url: /en/shop
+            - link "Offers" [ref=e230] [cursor=pointer]:
+              - /url: /en/offers
+            - link "Wishlist" [ref=e231] [cursor=pointer]:
+              - /url: /en/wishlist
+        - generic [ref=e232]:
+          - paragraph [ref=e233]: Service
+          - generic [ref=e234]:
+            - link "Order tracking" [ref=e235] [cursor=pointer]:
+              - /url: /en/account/tracking
+            - link "Help centre" [ref=e236] [cursor=pointer]:
+              - /url: /en/help
+            - link "Contact" [ref=e237] [cursor=pointer]:
+              - /url: /en/contact
+        - generic [ref=e238]:
+          - paragraph [ref=e239]: Company
+          - generic [ref=e240]:
+            - link "About Velora" [ref=e241] [cursor=pointer]:
+              - /url: /en/about
+            - link "Account" [ref=e242] [cursor=pointer]:
+              - /url: /en/account
+            - link "Operations" [ref=e243] [cursor=pointer]:
+              - /url: /en/admin
+  - region "Notifications alt+T"

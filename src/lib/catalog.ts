@@ -2307,7 +2307,7 @@ export const sampleOrders: CustomerOrder[] = [
       line2: "Mid-Levels West",
       city: "Hong Kong",
       region: "Hong Kong Island",
-      postcode: "000000",
+      postcode: "",
       country: "Hong Kong SAR",
     },
     items: [
@@ -2368,7 +2368,7 @@ export const sampleOrders: CustomerOrder[] = [
       line2: "Mid-Levels West",
       city: "Hong Kong",
       region: "Hong Kong Island",
-      postcode: "000000",
+      postcode: "",
       country: "Hong Kong SAR",
     },
     items: [

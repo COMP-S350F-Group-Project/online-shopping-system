@@ -1,0 +1,171 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - link "Velora" [ref=e6] [cursor=pointer]:
+            - /url: /en
+          - navigation [ref=e7]:
+            - link "Home" [ref=e8] [cursor=pointer]:
+              - /url: /en
+            - link "Shop" [ref=e9] [cursor=pointer]:
+              - /url: /en/shop
+            - link "Offers" [ref=e10] [cursor=pointer]:
+              - /url: /en/offers
+            - link "About" [ref=e11] [cursor=pointer]:
+              - /url: /en/about
+            - link "Support" [ref=e12] [cursor=pointer]:
+              - /url: /en/help
+        - generic [ref=e13]:
+          - generic [ref=e14]:
+            - img [ref=e15]
+            - button "EN" [ref=e19]
+            - button "繁中" [ref=e20]
+          - link "3" [ref=e21] [cursor=pointer]:
+            - /url: /en/wishlist
+            - img [ref=e22]
+            - generic [ref=e24]: "3"
+          - link [ref=e25] [cursor=pointer]:
+            - /url: /en/account
+            - img [ref=e26]
+          - button "Bag" [ref=e29]:
+            - img [ref=e30]
+    - main [ref=e34]:
+      - generic [ref=e245]:
+        - generic [ref=e247]:
+          - img [ref=e249]
+          - generic [ref=e252]:
+            - paragraph [ref=e253]: Order complete
+            - heading "Order confirmed" [level=2] [ref=e254]
+            - paragraph [ref=e255]: Order VLR-81596 has been placed. Confirmation and tracking updates are on the way.
+          - generic [ref=e256]:
+            - generic [ref=e257]:
+              - img [ref=e258]
+              - paragraph [ref=e263]: Preparing
+              - paragraph [ref=e264]: Your order is now moving through the studio fulfillment queue.
+            - generic [ref=e265]:
+              - img [ref=e266]
+              - paragraph [ref=e271]: Tracking updates
+              - paragraph [ref=e272]: Shipping milestones will be sent to you automatically by email.
+            - generic [ref=e273]:
+              - img [ref=e274]
+              - paragraph [ref=e277]: Aftercare
+              - paragraph [ref=e278]: For delivery changes or gifting requests, client care can assist directly.
+          - generic [ref=e279]:
+            - link "Track this order" [ref=e280] [cursor=pointer]:
+              - /url: /en/account/tracking
+            - link "Open account orders" [ref=e281] [cursor=pointer]:
+              - /url: /en/account/orders
+            - link "Continue shopping" [ref=e282] [cursor=pointer]:
+              - /url: /en/shop
+        - generic [ref=e283]:
+          - generic [ref=e285]:
+            - heading "Order summary" [level=2] [ref=e286]
+            - generic [ref=e287]:
+              - generic [ref=e289]:
+                - generic [ref=e290]:
+                  - paragraph [ref=e291]: Arc One Headphones
+                  - paragraph [ref=e292]: Obsidian · Standard
+                  - paragraph [ref=e293]: × 1
+                - paragraph [ref=e294]: HK$3,290
+              - generic [ref=e296]:
+                - generic [ref=e297]:
+                  - paragraph [ref=e298]: Studio Dock 140
+                  - paragraph [ref=e299]: Graphite · Hong Kong
+                  - paragraph [ref=e300]: × 1
+                - paragraph [ref=e301]: HK$980
+            - generic [ref=e302]:
+              - generic [ref=e303]:
+                - generic [ref=e304]: Subtotal
+                - generic [ref=e305]: HK$4,270
+              - generic [ref=e306]:
+                - generic [ref=e307]: Discount
+                - generic [ref=e308]: "-HK$427"
+              - generic [ref=e309]:
+                - generic [ref=e310]: Shipping
+                - generic [ref=e311]: HK$90
+              - generic [ref=e312]:
+                - generic [ref=e313]: Duties & taxes
+                - generic [ref=e314]: HK$115
+              - generic [ref=e315]:
+                - generic [ref=e316]: Total
+                - generic [ref=e317]: HK$4,048
+          - generic [ref=e318]:
+            - generic [ref=e319]:
+              - heading "Delivery and contact" [level=2] [ref=e320]
+              - generic [ref=e321]:
+                - generic [ref=e323]:
+                  - img [ref=e324]
+                  - generic [ref=e327]:
+                    - paragraph [ref=e328]: Placed on
+                    - paragraph [ref=e329]: 1 Apr 2026
+                    - paragraph [ref=e330]: evelyn@private-mail.com
+                    - paragraph [ref=e331]: +852 6123 4568
+                - generic [ref=e333]:
+                  - img [ref=e334]
+                  - generic [ref=e339]:
+                    - paragraph [ref=e340]: Delivery method
+                    - paragraph [ref=e341]: Express courier
+                    - paragraph [ref=e342]:
+                      - text: Evelyn Lau
+                      - text: Tower 3, 39 Conduit Road, Mid-Levels West
+                      - text: Hong Kong, Hong Kong Island
+                - generic [ref=e344]:
+                  - img [ref=e345]
+                  - generic [ref=e347]:
+                    - paragraph [ref=e348]: Payment method
+                    - paragraph [ref=e349]: Visa ending 0488
+            - generic [ref=e350]:
+              - heading "What happens next" [level=2] [ref=e351]
+              - generic [ref=e352]:
+                - generic [ref=e353]:
+                  - img [ref=e354]
+                  - paragraph [ref=e359]: Payment confirmed
+                  - paragraph [ref=e360]: A confirmation receipt and order details have been sent to your inbox.
+                - generic [ref=e361]:
+                  - img [ref=e362]
+                  - paragraph [ref=e367]: Fulfillment is now in motion
+                  - paragraph [ref=e368]: The delivery method selected at checkout will guide the next handoff window.
+                - generic [ref=e369]:
+                  - img [ref=e370]
+                  - paragraph [ref=e373]: Client care remains available
+                  - paragraph [ref=e374]: Address changes, gifting adjustments, and service questions can still be handled after checkout.
+              - generic [ref=e375]:
+                - link "Open account orders" [ref=e376] [cursor=pointer]:
+                  - /url: /en/account/orders
+                - link "Contact client care" [ref=e377] [cursor=pointer]:
+                  - /url: /en/contact
+    - contentinfo [ref=e221]:
+      - generic [ref=e222]:
+        - generic [ref=e223]:
+          - paragraph [ref=e224]: Velora
+          - paragraph [ref=e225]: Precision-crafted audio, carry, and smart-living essentials from Hong Kong.
+        - generic [ref=e226]:
+          - paragraph [ref=e227]: Shop
+          - generic [ref=e228]:
+            - link "All products" [ref=e229] [cursor=pointer]:
+              - /url: /en/shop
+            - link "Offers" [ref=e230] [cursor=pointer]:
+              - /url: /en/offers
+            - link "Wishlist" [ref=e231] [cursor=pointer]:
+              - /url: /en/wishlist
+        - generic [ref=e232]:
+          - paragraph [ref=e233]: Service
+          - generic [ref=e234]:
+            - link "Order tracking" [ref=e235] [cursor=pointer]:
+              - /url: /en/account/tracking
+            - link "Help centre" [ref=e236] [cursor=pointer]:
+              - /url: /en/help
+            - link "Contact" [ref=e237] [cursor=pointer]:
+              - /url: /en/contact
+        - generic [ref=e238]:
+          - paragraph [ref=e239]: Company
+          - generic [ref=e240]:
+            - link "About Velora" [ref=e241] [cursor=pointer]:
+              - /url: /en/about
+            - link "Account" [ref=e242] [cursor=pointer]:
+              - /url: /en/account
+            - link "Operations" [ref=e243] [cursor=pointer]:
+              - /url: /en/admin
+  - region "Notifications alt+T"
+  - alert [ref=e244]

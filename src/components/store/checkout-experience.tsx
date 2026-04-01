@@ -1,7 +1,16 @@
 "use client";
 
+import type React from "react";
 import { startTransition, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
+import {
+  Clock3,
+  CreditCard,
+  LoaderCircle,
+  LockKeyhole,
+  PackageCheck,
+  ShieldCheck,
+} from "lucide-react";
 
 import { useTranslations } from "@/components/providers/locale-provider";
 import { EmptyState } from "@/components/shared/empty-state";
@@ -9,19 +18,55 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
+  accountProfile,
   getProductBySlug,
   getProductPriceForSelection,
-  getPromotionByCode,
+  getSelectionSummary,
+  sampleOrders,
 } from "@/lib/catalog";
+import { calculateOrderSummary, getShippingOptionContent } from "@/lib/commerce";
 import { formatCurrency } from "@/lib/format";
 import { useCommerceStore } from "@/lib/store";
-import type { Locale } from "@/types";
+import { cn } from "@/lib/utils";
+import type { Locale, ShippingMethod } from "@/types";
 
-const shippingFees = {
-  complimentary: 0,
-  express: 90,
-  studio: 0,
-} as const;
+const [defaultFirstName, defaultLastName] = accountProfile.name.split(" ");
+const defaultAddress = sampleOrders[0]?.shippingAddress;
+
+const shippingMethods: ShippingMethod[] = ["complimentary", "express", "studio"];
+
+function FieldLabel({
+  children,
+  htmlFor,
+}: {
+  children: string;
+  htmlFor: string;
+}) {
+  return (
+    <label className="mb-2 block text-sm font-semibold text-[var(--ink)]" htmlFor={htmlFor}>
+      {children}
+    </label>
+  );
+}
+
+function SectionPanel({
+  children,
+  title,
+  copy,
+}: React.PropsWithChildren<{
+  title: string;
+  copy?: string;
+}>) {
+  return (
+    <section className="rounded-[32px] border border-[var(--line)] bg-white/75 p-6 backdrop-blur">
+      <div className="mb-5 space-y-2">
+        <h2 className="font-display text-3xl">{title}</h2>
+        {copy ? <p className="text-sm leading-7 text-slate-600">{copy}</p> : null}
+      </div>
+      {children}
+    </section>
+  );
+}
 
 export function CheckoutExperience({ locale }: { locale: Locale }) {
   const router = useRouter();
@@ -29,36 +74,20 @@ export function CheckoutExperience({ locale }: { locale: Locale }) {
   const cart = useCommerceStore((state) => state.cart);
   const appliedCoupon = useCommerceStore((state) => state.appliedCoupon);
   const shippingMethod = useCommerceStore((state) => state.shippingMethod);
+  const setShippingMethod = useCommerceStore((state) => state.setShippingMethod);
   const completeCheckout = useCommerceStore((state) => state.completeCheckout);
+  const [paymentMode, setPaymentMode] = useState<"saved" | "new">("saved");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionStage, setSubmissionStage] = useState<"idle" | "authorizing" | "finalizing">(
+    "idle",
+  );
 
-  const summary = useMemo(() => {
-    const subtotal = cart.reduce((sum, item) => {
-      const product = getProductBySlug(item.productSlug);
-      if (!product) {
-        return sum;
-      }
-      return sum + getProductPriceForSelection(product, item.selections) * item.quantity;
-    }, 0);
-
-    const promotion = appliedCoupon ? getPromotionByCode(appliedCoupon) : undefined;
-    const discount =
-      promotion && subtotal >= promotion.minimumSpend
-        ? promotion.discountType === "fixed"
-          ? promotion.discountValue
-          : Math.round((subtotal * promotion.discountValue) / 100)
-        : 0;
-    const shipping = shippingFees[shippingMethod];
-    const tax = Math.round((subtotal - discount) * 0.03);
-
-    return {
-      subtotal,
-      discount,
-      shipping,
-      tax,
-      total: subtotal - discount + shipping + tax,
-    };
-  }, [appliedCoupon, cart, shippingMethod]);
+  const summary = useMemo(
+    () => calculateOrderSummary(cart, appliedCoupon, shippingMethod),
+    [appliedCoupon, cart, shippingMethod],
+  );
+  const selectedShipping = getShippingOptionContent(shippingMethod, locale);
+  const itemCount = cart.reduce((count, item) => count + item.quantity, 0);
 
   if (cart.length === 0) {
     return (
@@ -78,149 +107,439 @@ export function CheckoutExperience({ locale }: { locale: Locale }) {
     );
   }
 
+  const orderButtonLabel =
+    submissionStage === "authorizing"
+      ? t("checkout.authorizing")
+      : submissionStage === "finalizing"
+        ? t("checkout.finalizing")
+        : t("checkout.placeOrder");
+
   return (
-    <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
+    <div className="grid gap-8 lg:grid-cols-[1.14fr_0.86fr]">
       <form
         id="checkout-form"
         className="space-y-6"
         onSubmit={(event) => {
           event.preventDefault();
-          setIsSubmitting(true);
 
+          const formData = new FormData(event.currentTarget);
+          const firstName = String(formData.get("firstName") ?? "").trim();
+          const lastName = String(formData.get("lastName") ?? "").trim();
+          const email = String(formData.get("email") ?? "").trim();
+          const phone = String(formData.get("phone") ?? "").trim();
+          const line1 = String(formData.get("line1") ?? "").trim();
+          const line2 = String(formData.get("line2") ?? "").trim();
+          const city = String(formData.get("city") ?? "").trim();
+          const region = String(formData.get("region") ?? "").trim();
+          const postcode = String(formData.get("postcode") ?? "").trim();
+          const orderNotes = String(formData.get("orderNotes") ?? "").trim();
+          const cardNumber = String(formData.get("cardNumber") ?? "").replace(/\s+/g, "");
+          const last4 = cardNumber.replace(/\D/g, "").slice(-4) || "0488";
           const orderNumber = `VLR-${Math.floor(10000 + Math.random() * 89999)}`;
-          completeCheckout(orderNumber);
+          const paymentLabel =
+            paymentMode === "saved"
+              ? accountProfile.defaultPayment[locale]
+              : locale === "zh-Hant"
+                ? `Visa 尾號 ${last4}`
+                : `Visa ending ${last4}`;
 
-          startTransition(() => {
-            router.push(`/${locale}/checkout/confirmation?order=${orderNumber}`);
-          });
+          setIsSubmitting(true);
+          setSubmissionStage("authorizing");
+
+          window.setTimeout(() => {
+            setSubmissionStage("finalizing");
+
+            completeCheckout({
+              orderNumber,
+              placedAt: new Date().toISOString(),
+              contact: {
+                firstName,
+                lastName,
+                email,
+                phone,
+              },
+              shippingAddress: {
+                name: `${firstName} ${lastName}`.trim(),
+                line1,
+                line2: line2 || undefined,
+                city,
+                region,
+                postcode,
+                country: locale === "zh-Hant" ? "香港特別行政區" : "Hong Kong SAR",
+              },
+              shippingMethod,
+              paymentLabel,
+              orderNotes: orderNotes || undefined,
+              items: cart,
+              ...summary,
+            });
+
+            startTransition(() => {
+              router.push(`/${locale}/checkout/confirmation?order=${orderNumber}`);
+            });
+          }, 700);
         }}
       >
-        <section className="rounded-[32px] border border-[var(--line)] bg-white/75 p-6 backdrop-blur">
-          <div className="mb-5 space-y-2">
-            <h2 className="font-display text-3xl">{t("checkout.contact")}</h2>
-          </div>
-          <div className="grid gap-4 md:grid-cols-2">
-            <Input autoComplete="given-name" placeholder={t("auth.firstName")} required />
-            <Input autoComplete="family-name" placeholder={t("auth.lastName")} required />
-            <Input
-              autoComplete="email"
-              className="md:col-span-2"
-              placeholder={t("auth.email")}
-              required
-              type="email"
-            />
-            <Input
-              autoComplete="tel"
-              className="md:col-span-2"
-              defaultValue="+852 6123 4568"
-              placeholder={t("common.phone")}
-              required
-              type="tel"
-            />
-          </div>
-        </section>
+        <div className="grid gap-3 md:grid-cols-3">
+          {[
+            {
+              icon: LockKeyhole,
+              title: t("checkout.assuranceSecureTitle"),
+              copy: t("checkout.assuranceSecureCopy"),
+            },
+            {
+              icon: Clock3,
+              title: t("checkout.assuranceDeliveryTitle"),
+              copy: t("checkout.assuranceDeliveryCopy"),
+            },
+            {
+              icon: PackageCheck,
+              title: t("checkout.assuranceAftercareTitle"),
+              copy: t("checkout.assuranceAftercareCopy"),
+            },
+          ].map((item) => (
+            <div
+              key={item.title}
+              className="rounded-[28px] border border-[var(--line)] bg-white/70 px-5 py-4"
+            >
+              <item.icon className="h-5 w-5 text-[var(--accent)]" />
+              <p className="mt-4 text-sm font-semibold text-[var(--ink)]">{item.title}</p>
+              <p className="mt-2 text-sm leading-7 text-slate-600">{item.copy}</p>
+            </div>
+          ))}
+        </div>
 
-        <section className="rounded-[32px] border border-[var(--line)] bg-white/75 p-6 backdrop-blur">
-          <div className="mb-5 space-y-2">
-            <h2 className="font-display text-3xl">{t("checkout.shippingAddress")}</h2>
-          </div>
+        <SectionPanel copy={t("checkout.contactCopy")} title={t("checkout.contact")}>
           <div className="grid gap-4 md:grid-cols-2">
-            <Input
-              autoComplete="address-line1"
-              className="md:col-span-2"
-              defaultValue={
-                locale === "zh-Hant"
-                  ? "干德道 39 號 3 座"
-                  : "Tower 3, 39 Conduit Road"
-              }
-              required
-            />
-            <Input
-              autoComplete="address-level3"
-              defaultValue={locale === "zh-Hant" ? "半山西" : "Mid-Levels West"}
-              required
-            />
-            <Input
-              autoComplete="address-level2"
-              defaultValue={locale === "zh-Hant" ? "香港" : "Hong Kong"}
-              required
-            />
-            <Input
-              autoComplete="address-level1"
-              defaultValue={locale === "zh-Hant" ? "香港島" : "Hong Kong Island"}
-              required
-            />
-            <Input autoComplete="postal-code" defaultValue="000000" required />
-            <Textarea className="md:col-span-2" placeholder={t("checkout.orderNotes")} />
+            <div>
+              <FieldLabel htmlFor="checkout-first-name">{t("auth.firstName")}</FieldLabel>
+              <Input
+                autoComplete="given-name"
+                defaultValue={defaultFirstName}
+                id="checkout-first-name"
+                name="firstName"
+                required
+              />
+            </div>
+            <div>
+              <FieldLabel htmlFor="checkout-last-name">{t("auth.lastName")}</FieldLabel>
+              <Input
+                autoComplete="family-name"
+                defaultValue={defaultLastName}
+                id="checkout-last-name"
+                name="lastName"
+                required
+              />
+            </div>
+            <div className="md:col-span-2">
+              <FieldLabel htmlFor="checkout-email">{t("auth.email")}</FieldLabel>
+              <Input
+                autoComplete="email"
+                defaultValue={accountProfile.email}
+                id="checkout-email"
+                name="email"
+                required
+                type="email"
+              />
+            </div>
+            <div className="md:col-span-2">
+              <FieldLabel htmlFor="checkout-phone">{t("common.phone")}</FieldLabel>
+              <Input
+                autoComplete="tel"
+                defaultValue="+852 6123 4568"
+                id="checkout-phone"
+                name="phone"
+                required
+                type="tel"
+              />
+            </div>
           </div>
-        </section>
+        </SectionPanel>
 
-        <section className="rounded-[32px] border border-[var(--line)] bg-white/75 p-6 backdrop-blur">
-          <div className="mb-5 space-y-2">
-            <h2 className="font-display text-3xl">{t("checkout.payment")}</h2>
+        <SectionPanel copy={t("checkout.deliveryMethodCopy")} title={t("checkout.deliveryMethod")}>
+          <div className="grid gap-3">
+            {shippingMethods.map((method) => {
+              const option = getShippingOptionContent(method, locale);
+
+              return (
+                <button
+                  key={method}
+                  className={cn(
+                    "rounded-[26px] border px-5 py-4 text-left transition",
+                    method === shippingMethod
+                      ? "border-[var(--accent)] bg-[var(--accent-soft)] shadow-[0_18px_40px_rgba(163,127,76,0.08)]"
+                      : "border-[var(--line)] bg-white/70 hover:bg-white",
+                  )}
+                  onClick={() => setShippingMethod(method)}
+                  type="button"
+                >
+                  <div className="flex flex-wrap items-start justify-between gap-3">
+                    <div>
+                      <p className="font-semibold text-[var(--ink)]">{option.label}</p>
+                      <p className="mt-2 text-sm leading-7 text-slate-600">{option.promise}</p>
+                    </div>
+                    <p className="text-sm font-semibold text-[var(--ink)]">
+                      {option.fee ? formatCurrency(option.fee, locale) : t("common.free")}
+                    </p>
+                  </div>
+                  <p className="mt-3 text-xs leading-6 text-slate-500">{option.detail}</p>
+                </button>
+              );
+            })}
           </div>
+        </SectionPanel>
+
+        <SectionPanel copy={t("checkout.shippingAddressCopy")} title={t("checkout.shippingAddress")}>
           <div className="grid gap-4 md:grid-cols-2">
-            <Input
-              autoComplete="cc-name"
-              className="md:col-span-2"
-              defaultValue={locale === "zh-Hant" ? "Evelyn Lau" : "Evelyn Lau"}
-              placeholder={t("checkout.cardName")}
-              required
-            />
-            <Input
-              autoComplete="cc-number"
-              className="md:col-span-2"
-              defaultValue="4835 2210 6842 1906"
-              inputMode="numeric"
-              placeholder={t("checkout.cardNumber")}
-              required
-            />
-            <Input
-              autoComplete="cc-exp"
-              defaultValue="08 / 29"
-              inputMode="numeric"
-              placeholder={t("checkout.expiry")}
-              required
-            />
-            <Input
-              autoComplete="cc-csc"
-              defaultValue="482"
-              inputMode="numeric"
-              placeholder={t("checkout.cvc")}
-              required
-            />
+            <div className="md:col-span-2">
+              <FieldLabel htmlFor="checkout-line1">{t("checkout.addressLine1")}</FieldLabel>
+              <Input
+                autoComplete="address-line1"
+                defaultValue={defaultAddress?.line1}
+                id="checkout-line1"
+                name="line1"
+                required
+              />
+            </div>
+            <div className="md:col-span-2">
+              <FieldLabel htmlFor="checkout-line2">{t("checkout.addressLine2")}</FieldLabel>
+              <Input
+                autoComplete="address-line2"
+                defaultValue={defaultAddress?.line2}
+                id="checkout-line2"
+                name="line2"
+              />
+            </div>
+            <div>
+              <FieldLabel htmlFor="checkout-city">{t("checkout.city")}</FieldLabel>
+              <Input
+                autoComplete="address-level2"
+                defaultValue={defaultAddress?.city ?? (locale === "zh-Hant" ? "香港" : "Hong Kong")}
+                id="checkout-city"
+                name="city"
+                required
+              />
+            </div>
+            <div>
+              <FieldLabel htmlFor="checkout-region">{t("checkout.region")}</FieldLabel>
+              <Input
+                autoComplete="address-level1"
+                defaultValue={
+                  defaultAddress?.region ?? (locale === "zh-Hant" ? "香港島" : "Hong Kong Island")
+                }
+                id="checkout-region"
+                name="region"
+                required
+              />
+            </div>
+            <div>
+              <FieldLabel htmlFor="checkout-postcode">{t("checkout.postcode")}</FieldLabel>
+              <Input
+                autoComplete="postal-code"
+                defaultValue={defaultAddress?.postcode}
+                id="checkout-postcode"
+                name="postcode"
+                placeholder={t("checkout.optional")}
+              />
+            </div>
+            <div>
+              <FieldLabel htmlFor="checkout-country">{t("checkout.country")}</FieldLabel>
+              <Input
+                defaultValue={locale === "zh-Hant" ? "香港特別行政區" : "Hong Kong SAR"}
+                id="checkout-country"
+                readOnly
+              />
+            </div>
+            <div className="md:col-span-2">
+              <FieldLabel htmlFor="checkout-order-notes">{t("checkout.orderNotes")}</FieldLabel>
+              <Textarea
+                id="checkout-order-notes"
+                name="orderNotes"
+                placeholder={t("checkout.orderNotesPlaceholder")}
+              />
+            </div>
           </div>
-        </section>
+        </SectionPanel>
+
+        <SectionPanel copy={t("checkout.paymentCopy")} title={t("checkout.payment")}>
+          <div className="grid gap-3 md:grid-cols-2">
+            <button
+              className={cn(
+                "rounded-[26px] border px-5 py-4 text-left transition",
+                paymentMode === "saved"
+                  ? "border-[var(--accent)] bg-[var(--accent-soft)]"
+                  : "border-[var(--line)] bg-white/70 hover:bg-white",
+              )}
+              onClick={() => setPaymentMode("saved")}
+              type="button"
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <p className="font-semibold text-[var(--ink)]">{t("checkout.savedCardTitle")}</p>
+                  <p className="mt-2 text-sm leading-7 text-slate-600">
+                    {accountProfile.defaultPayment[locale]}
+                  </p>
+                </div>
+                <CreditCard className="h-5 w-5 text-[var(--accent)]" />
+              </div>
+              <p className="mt-3 text-xs leading-6 text-slate-500">{t("checkout.savedCardCopy")}</p>
+            </button>
+
+            <button
+              className={cn(
+                "rounded-[26px] border px-5 py-4 text-left transition",
+                paymentMode === "new"
+                  ? "border-[var(--accent)] bg-[var(--accent-soft)]"
+                  : "border-[var(--line)] bg-white/70 hover:bg-white",
+              )}
+              onClick={() => setPaymentMode("new")}
+              type="button"
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <p className="font-semibold text-[var(--ink)]">{t("checkout.newCardTitle")}</p>
+                  <p className="mt-2 text-sm leading-7 text-slate-600">{t("checkout.newCardCopy")}</p>
+                </div>
+                <ShieldCheck className="h-5 w-5 text-[var(--accent)]" />
+              </div>
+            </button>
+          </div>
+
+          {paymentMode === "saved" ? (
+            <div className="mt-5 rounded-[26px] border border-[var(--line)] bg-[var(--surface-strong)] p-5">
+              <div className="grid gap-4 md:grid-cols-[1fr_0.32fr]">
+                <div>
+                  <p className="text-sm font-semibold text-[var(--ink)]">{accountProfile.defaultPayment[locale]}</p>
+                  <p className="mt-2 text-sm leading-7 text-slate-600">{t("checkout.savedCardSecurityCopy")}</p>
+                </div>
+                <div>
+                  <FieldLabel htmlFor="checkout-saved-cvc">{t("checkout.cvc")}</FieldLabel>
+                  <Input
+                    autoComplete="cc-csc"
+                    defaultValue="482"
+                    id="checkout-saved-cvc"
+                    inputMode="numeric"
+                    required
+                  />
+                </div>
+              </div>
+              <input name="cardNumber" type="hidden" value="4835 2210 6842 1906" />
+            </div>
+          ) : (
+            <div className="mt-5 grid gap-4 md:grid-cols-2">
+              <div className="md:col-span-2">
+                <FieldLabel htmlFor="checkout-card-name">{t("checkout.cardName")}</FieldLabel>
+                <Input
+                  autoComplete="cc-name"
+                  defaultValue={accountProfile.name}
+                  id="checkout-card-name"
+                  name="cardName"
+                  required
+                />
+              </div>
+              <div className="md:col-span-2">
+                <FieldLabel htmlFor="checkout-card-number">{t("checkout.cardNumber")}</FieldLabel>
+                <Input
+                  autoComplete="cc-number"
+                  id="checkout-card-number"
+                  inputMode="numeric"
+                  name="cardNumber"
+                  placeholder="4242 4242 4242 4242"
+                  required
+                />
+              </div>
+              <div>
+                <FieldLabel htmlFor="checkout-expiry">{t("checkout.expiry")}</FieldLabel>
+                <Input
+                  autoComplete="cc-exp"
+                  id="checkout-expiry"
+                  inputMode="numeric"
+                  name="expiry"
+                  placeholder="08 / 29"
+                  required
+                />
+              </div>
+              <div>
+                <FieldLabel htmlFor="checkout-cvc">{t("checkout.cvc")}</FieldLabel>
+                <Input
+                  autoComplete="cc-csc"
+                  id="checkout-cvc"
+                  inputMode="numeric"
+                  name="cvc"
+                  placeholder="482"
+                  required
+                />
+              </div>
+            </div>
+          )}
+        </SectionPanel>
+
+        <SectionPanel copy={t("checkout.reviewCopy")} title={t("checkout.reviewTitle")}>
+          <div className="grid gap-4 md:grid-cols-2">
+            <div className="rounded-[24px] border border-[var(--line)] bg-white/70 p-5">
+              <p className="text-sm text-slate-500">{t("checkout.reviewContact")}</p>
+              <p className="mt-2 font-semibold text-[var(--ink)]">{t("auth.email")}</p>
+              <p className="mt-2 text-sm leading-7 text-slate-600">
+                {locale === "zh-Hant"
+                  ? "訂單確認、付款通知與物流更新會寄送到上方填寫的電郵與電話。"
+                  : "Order confirmation, payment updates, and shipping milestones will follow the contact details above."}
+              </p>
+            </div>
+            <div className="rounded-[24px] border border-[var(--line)] bg-white/70 p-5">
+              <p className="text-sm text-slate-500">{t("checkout.reviewDelivery")}</p>
+              <p className="mt-2 font-semibold text-[var(--ink)]">{selectedShipping.label}</p>
+              <p className="mt-2 text-sm leading-7 text-slate-600">{selectedShipping.promise}</p>
+            </div>
+          </div>
+        </SectionPanel>
       </form>
 
-      <aside className="space-y-5">
+      <aside className="space-y-5 lg:sticky lg:top-24 lg:self-start">
         <div className="rounded-[32px] border border-[var(--line)] bg-white/75 p-6 shadow-[0_20px_80px_rgba(15,23,42,0.05)] backdrop-blur">
           <div className="space-y-5">
-            <h2 className="font-display text-3xl">{t("cartPage.summaryTitle")}</h2>
+            <div className="flex items-center justify-between gap-3">
+              <h2 className="font-display text-3xl">{t("cartPage.summaryTitle")}</h2>
+              <p className="text-sm text-slate-500">
+                {locale === "zh-Hant" ? `${itemCount} 件商品` : `${itemCount} items`}
+              </p>
+            </div>
+
             <div className="space-y-4">
               {cart.map((item) => {
                 const product = getProductBySlug(item.productSlug);
                 if (!product) {
                   return null;
                 }
+
                 return (
                   <div
                     key={`${item.productSlug}-${JSON.stringify(item.selections)}`}
-                    className="flex items-start justify-between gap-4"
+                    className="rounded-[24px] border border-[var(--line)] bg-white/60 p-4"
                   >
-                    <div>
-                      <p className="font-medium text-[var(--ink)]">{product.name[locale]}</p>
-                      <p className="text-sm text-slate-500">× {item.quantity}</p>
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <p className="font-medium text-[var(--ink)]">{product.name[locale]}</p>
+                        <p className="mt-1 text-sm text-slate-500">
+                          {getSelectionSummary(product, item.selections, locale)}
+                        </p>
+                        <p className="mt-1 text-sm text-slate-500">× {item.quantity}</p>
+                      </div>
+                      <p className="font-medium text-[var(--ink)]">
+                        {formatCurrency(
+                          getProductPriceForSelection(product, item.selections) * item.quantity,
+                          locale,
+                        )}
+                      </p>
                     </div>
-                    <p className="font-medium text-[var(--ink)]">
-                      {formatCurrency(
-                        getProductPriceForSelection(product, item.selections) * item.quantity,
-                        locale,
-                      )}
-                    </p>
                   </div>
                 );
               })}
+            </div>
+
+            <div className="rounded-[24px] bg-[var(--surface-strong)] px-4 py-4">
+              <p className="text-sm font-semibold text-[var(--ink)]">{selectedShipping.label}</p>
+              <p className="mt-2 text-sm leading-7 text-slate-600">{selectedShipping.promise}</p>
+              <p className="mt-2 text-xs leading-6 text-slate-500">{selectedShipping.detail}</p>
             </div>
 
             <div className="space-y-3 border-t border-[var(--line)] pt-4 text-sm text-slate-600">
@@ -247,9 +566,19 @@ export function CheckoutExperience({ locale }: { locale: Locale }) {
               <span>{formatCurrency(summary.total, locale)}</span>
             </div>
 
+            <div className="rounded-[24px] border border-[var(--line)] bg-white/60 p-4">
+              <p className="text-sm font-semibold text-[var(--ink)]">{t("checkout.secureSummaryTitle")}</p>
+              <p className="mt-2 text-sm leading-7 text-slate-600">{t("checkout.secureSummaryCopy")}</p>
+            </div>
+
             <Button className="w-full" disabled={isSubmitting} form="checkout-form" type="submit">
-              {t("checkout.placeOrder")}
+              {isSubmitting ? <LoaderCircle className="h-4 w-4 animate-spin" /> : null}
+              {orderButtonLabel}
             </Button>
+
+            <p aria-live="polite" className="text-sm leading-7 text-slate-500">
+              {isSubmitting ? t("checkout.processingNotice") : t("checkout.submitNotice")}
+            </p>
           </div>
         </div>
       </aside>

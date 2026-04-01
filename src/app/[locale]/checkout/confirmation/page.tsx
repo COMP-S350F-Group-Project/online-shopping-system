@@ -1,5 +1,6 @@
 import { CircleCheckBig, PackageCheck, Truck } from "lucide-react";
 
+import { ConfirmationExperience } from "@/components/store/confirmation-experience";
 import { Button } from "@/components/ui/button";
 import { LocaleLink } from "@/components/shared/locale-link";
 import { SectionHeading } from "@/components/shared/section-heading";
@@ -18,9 +19,9 @@ export default async function ConfirmationPage({
   const orderNumber = deserialiseSearchValue(query.order) || "VLR-24816";
 
   return (
-    <div className="container-shell py-10">
+    <div className="container-shell space-y-8 py-10">
       <div className="surface-panel rounded-[40px] px-6 py-10 text-center md:px-10 md:py-14">
-        <div className="mx-auto max-w-3xl space-y-6">
+        <div className="mx-auto max-w-4xl space-y-6">
           <div className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-700">
             <CircleCheckBig className="h-8 w-8" />
           </div>
@@ -78,6 +79,11 @@ export default async function ConfirmationPage({
               </LocaleLink>
             </Button>
             <Button asChild variant="secondary">
+              <LocaleLink href="/account/orders" locale={locale}>
+                {locale === "zh-Hant" ? "查看訂單紀錄" : "Open account orders"}
+              </LocaleLink>
+            </Button>
+            <Button asChild variant="secondary">
               <LocaleLink href="/shop" locale={locale}>
                 {locale === "zh-Hant" ? "繼續選購" : "Continue shopping"}
               </LocaleLink>
@@ -85,6 +91,8 @@ export default async function ConfirmationPage({
           </div>
         </div>
       </div>
+
+      <ConfirmationExperience locale={locale} orderNumber={orderNumber} />
     </div>
   );
 }

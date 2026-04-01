@@ -146,15 +146,63 @@ export const enMessages = {
     description:
       "Delivery, payment, and order review in one streamlined flow.",
     contact: "Contact details",
+    contactCopy:
+      "Order confirmation, delivery milestones, and service updates will be sent to these details.",
     shippingAddress: "Shipping address",
+    shippingAddressCopy:
+      "Use the destination where you would like Velora to hand off the order or arrange collection.",
     payment: "Payment",
+    paymentCopy:
+      "Choose a saved card or add another payment method for this order.",
     deliveryMethod: "Delivery method",
+    deliveryMethodCopy:
+      "Select the delivery rhythm that best fits this order and the final handoff.",
+    reviewTitle: "Review before placing the order",
+    reviewCopy:
+      "One final check of delivery and contact details before payment is authorized.",
+    reviewContact: "Confirmation contact",
+    reviewDelivery: "Delivery rhythm",
     orderNotes: "Delivery notes",
+    orderNotesPlaceholder:
+      "Share building access notes, concierge details, or gifting requests.",
     placeOrder: "Place order",
+    authorizing: "Authorizing payment",
+    finalizing: "Securing your order",
     cardName: "Name on card",
     cardNumber: "Card number",
     expiry: "Expiry",
     cvc: "CVC",
+    addressLine1: "Address line 1",
+    addressLine2: "Address line 2",
+    city: "City",
+    region: "Region",
+    postcode: "Postal code",
+    country: "Country or region",
+    optional: "Optional",
+    savedCardTitle: "Saved card",
+    savedCardCopy:
+      "Use the preferred card on file for a faster, lower-friction checkout.",
+    savedCardSecurityCopy:
+      "Enter the security code to re-confirm this payment method for the order.",
+    newCardTitle: "Use another card",
+    newCardCopy:
+      "Add a different card for this order without changing your saved preference.",
+    assuranceSecureTitle: "Encrypted payment",
+    assuranceSecureCopy:
+      "Payment details are reviewed in one secure step before the order is confirmed.",
+    assuranceDeliveryTitle: "Clear delivery promise",
+    assuranceDeliveryCopy:
+      "Every checkout shows the expected timing and the next handoff rhythm before you place the order.",
+    assuranceAftercareTitle: "Aftercare included",
+    assuranceAftercareCopy:
+      "Returns, replacements, and gifting adjustments remain supported after purchase.",
+    secureSummaryTitle: "Protected review",
+    secureSummaryCopy:
+      "Taxes, shipping upgrades, and order totals are confirmed before payment is authorized.",
+    submitNotice:
+      "By placing the order, you confirm the delivery details and authorize payment for the total shown.",
+    processingNotice:
+      "Reviewing payment and securing your order. Please keep this window open for a moment.",
   },
   confirmation: {
     title: "Order confirmed",
@@ -163,6 +211,24 @@ export const enMessages = {
     nextSteps: "What happens next",
     primaryCta: "Track this order",
     secondaryCta: "Continue shopping",
+    summaryTitle: "Order summary",
+    deliveryTitle: "Delivery and contact",
+    timelineTitle: "What happens next",
+    timelinePaymentTitle: "Payment confirmed",
+    timelinePaymentCopy:
+      "A confirmation receipt and order details have been sent to your inbox.",
+    timelineDeliveryTitle: "Fulfillment is now in motion",
+    timelineDeliveryCopy:
+      "The delivery method selected at checkout will guide the next handoff window.",
+    timelineSupportTitle: "Client care remains available",
+    timelineSupportCopy:
+      "Address changes, gifting adjustments, and service questions can still be handled after checkout.",
+    orderDate: "Placed on",
+    deliveryMethod: "Delivery method",
+    paymentMethod: "Payment method",
+    notes: "Delivery notes",
+    accountCta: "Open account orders",
+    supportCta: "Contact client care",
   },
   auth: {
     signInTitle: "Welcome back",
