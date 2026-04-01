@@ -4,16 +4,26 @@ import { useState } from "react";
 
 import { ProductVisual } from "@/components/store/product-visual";
 import { cn } from "@/lib/utils";
-import type { Product } from "@/types";
+import type { Locale, Product } from "@/types";
 
-export function ProductGallery({ product }: { product: Product }) {
+export function ProductGallery({
+  locale,
+  product,
+}: {
+  locale: Locale;
+  product: Product;
+}) {
   const [active, setActive] = useState(product.visuals[0].id);
   const visual = product.visuals.find((item) => item.id === active) ?? product.visuals[0];
 
   return (
     <div className="space-y-4">
       <div className="group relative overflow-hidden rounded-[36px] border border-[var(--line)] bg-white/70 p-4 backdrop-blur">
-        <ProductVisual className="aspect-[4/4.6] transition duration-500 group-hover:scale-[1.01]" visual={visual} />
+        <ProductVisual
+          className="aspect-[4/4.6] transition duration-500 group-hover:scale-[1.01]"
+          locale={locale}
+          visual={visual}
+        />
       </div>
       <div className="grid grid-cols-3 gap-3">
         {product.visuals.map((item) => (
@@ -26,7 +36,11 @@ export function ProductGallery({ product }: { product: Product }) {
             onClick={() => setActive(item.id)}
             type="button"
           >
-            <ProductVisual className="aspect-square rounded-[18px]" visual={item} />
+            <ProductVisual
+              className="aspect-square rounded-[18px]"
+              locale={locale}
+              visual={item}
+            />
           </button>
         ))}
       </div>

@@ -81,3 +81,22 @@ export function getOrderProgress(order: CustomerOrder) {
   const completed = order.timeline.filter((entry) => entry.complete).length;
   return Math.round((completed / order.timeline.length) * 100);
 }
+
+export function formatOrderStatus(status: OrderStatus, locale: Locale) {
+  const labels = {
+    processing: {
+      en: "Processing",
+      "zh-Hant": "處理中",
+    },
+    "in-transit": {
+      en: "In transit",
+      "zh-Hant": "配送途中",
+    },
+    delivered: {
+      en: "Delivered",
+      "zh-Hant": "已送達",
+    },
+  } as const;
+
+  return labels[status][locale];
+}

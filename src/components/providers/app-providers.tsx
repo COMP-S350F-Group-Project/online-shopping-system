@@ -1,9 +1,10 @@
 "use client";
 
+import type React from "react";
 import { Toaster } from "sonner";
 
 import { LocaleProvider } from "@/components/providers/locale-provider";
-import type { enMessages } from "@/messages/en";
+import { enMessages } from "@/messages/en";
 import type { Locale } from "@/types";
 
 type Messages = typeof enMessages;

@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import type { ProductVisual as ProductVisualType } from "@/types";
+import type { Locale, ProductVisual as ProductVisualType } from "@/types";
 
 type DeviceProps = {
   base: string;
@@ -33,8 +33,8 @@ function renderDevice(kind: ProductVisualType["kind"], colors: DeviceProps) {
       return (
         <>
           <div className="absolute left-1/2 top-[44%] h-28 w-44 -translate-x-1/2 rounded-[32px] border-4" style={shared} />
-          <div className="absolute left-[34%] top-[28%] h-18 w-10 rounded-[32px] border-4" style={shared} />
-          <div className="absolute right-[34%] top-[28%] h-18 w-10 rounded-[32px] border-4" style={shared} />
+          <div className="absolute left-[34%] top-[28%] h-[4.5rem] w-10 rounded-[32px] border-4" style={shared} />
+          <div className="absolute right-[34%] top-[28%] h-[4.5rem] w-10 rounded-[32px] border-4" style={shared} />
         </>
       );
     case "dock":
@@ -109,9 +109,11 @@ function renderDevice(kind: ProductVisualType["kind"], colors: DeviceProps) {
 
 export function ProductVisual({
   visual,
+  locale = "en",
   className,
 }: {
   visual: ProductVisualType;
+  locale?: Locale;
   className?: string;
 }) {
   return (
@@ -138,9 +140,9 @@ export function ProductVisual({
       <div className="absolute inset-0">{renderDevice(visual.kind, visual.palette)}</div>
       <div className="absolute inset-x-0 bottom-0 flex items-center justify-between border-t border-white/35 bg-white/60 px-5 py-4 backdrop-blur">
         <p className="text-xs font-medium uppercase tracking-[0.14em] text-slate-500">
-          {visual.label.en}
+          {visual.label[locale]}
         </p>
-        <p className="text-sm text-slate-600">{visual.caption.en}</p>
+        <p className="text-sm text-slate-600">{visual.caption[locale]}</p>
       </div>
     </div>
   );

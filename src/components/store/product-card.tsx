@@ -25,7 +25,7 @@ export function ProductCard({
     <article className="group rounded-[32px] border border-[var(--line)] bg-white/75 p-4 shadow-[0_16px_60px_rgba(15,23,42,0.05)] backdrop-blur transition hover:-translate-y-1 hover:shadow-[0_24px_90px_rgba(15,23,42,0.08)]">
       <div className="relative">
         <LocaleLink locale={locale} href={`/products/${product.slug}`}>
-          <ProductVisual className="aspect-[4/4.8]" visual={primaryVisual} />
+          <ProductVisual className="aspect-[4/4.8]" locale={locale} visual={primaryVisual} />
         </LocaleLink>
         <WishlistButton className="absolute right-3 top-3" productSlug={product.slug} />
       </div>

@@ -7,7 +7,11 @@ import { toast } from "sonner";
 
 import { useTranslations } from "@/components/providers/locale-provider";
 import { Button } from "@/components/ui/button";
-import { getProductPriceForSelection, getVariantOption } from "@/lib/catalog";
+import {
+  getCategoryBySlug,
+  getProductPriceForSelection,
+  getVariantOption,
+} from "@/lib/catalog";
 import { formatCurrency } from "@/lib/format";
 import { useCommerceStore } from "@/lib/store";
 import { cn } from "@/lib/utils";
@@ -26,6 +30,7 @@ export function ProductPurchasePanel({
   const [quantity, setQuantity] = useState(1);
   const [isPending, startTransition] = useTransition();
   const [selections, setSelections] = useState(product.defaultVariantSelection);
+  const category = getCategoryBySlug(product.category);
 
   const price = useMemo(
     () => getProductPriceForSelection(product, selections),
@@ -43,7 +48,7 @@ export function ProductPurchasePanel({
     <div className="space-y-8 rounded-[36px] border border-[var(--line)] bg-white/75 p-6 shadow-[0_24px_90px_rgba(15,23,42,0.06)] backdrop-blur md:p-8">
       <div className="space-y-4">
         <div className="space-y-2">
-          <p className="eyebrow">{product.category.replace("-", " ")}</p>
+          <p className="eyebrow">{category?.name[locale]}</p>
           <h1 className="font-display text-4xl leading-tight md:text-5xl">
             {product.name[locale]}
           </h1>

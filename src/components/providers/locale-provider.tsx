@@ -1,5 +1,6 @@
 "use client";
 
+import type React from "react";
 import { createContext, useContext } from "react";
 
 import { translate } from "@/lib/i18n";
