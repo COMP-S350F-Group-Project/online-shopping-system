@@ -223,6 +223,53 @@ export type StoryBlock = {
   body: LocalizedText;
 };
 
+export type ContentLink = {
+  id: string;
+  href: string;
+  title: LocalizedText;
+  description: LocalizedText;
+};
+
+export type LabelValue = {
+  label: LocalizedText;
+  value: LocalizedText;
+};
+
+export type SearchTerm = {
+  id: string;
+  label: LocalizedText;
+  query: LocalizedText;
+};
+
+export type PredictiveSearchLink = {
+  id: string;
+  href: string;
+  label: string;
+  description?: string;
+  kind: "query" | "category" | "collection";
+};
+
+export type PredictiveSearchProduct = {
+  id: string;
+  href: string;
+  title: string;
+  description: string;
+  category: string;
+  price: number;
+  rating: number;
+  reviewCount: number;
+  stockState: StockState;
+};
+
+export type PredictiveSearchPayload = {
+  query: string;
+  totalResults: number;
+  queries: PredictiveSearchLink[];
+  categories: PredictiveSearchLink[];
+  collections: PredictiveSearchLink[];
+  products: PredictiveSearchProduct[];
+};
+
 export type AdminMetric = {
   label: LocalizedText;
   value: string;

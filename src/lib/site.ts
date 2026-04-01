@@ -3,8 +3,11 @@ import type {
   AdminMetric,
   AdminQueueItem,
   Collection,
+  ContentLink,
+  LabelValue,
   Locale,
   LocalizedText,
+  SearchTerm,
   StoryBlock,
   SupportArticle,
   SupportChannel,
@@ -60,6 +63,168 @@ export const collections: Collection[] = [
       "Desk and smart-living objects that bring rhythm to focused spaces.",
       "以節奏感梳理工作桌面與居家空間的精選器物。",
     ),
+  },
+];
+
+export const searchPopularTerms: SearchTerm[] = [
+  {
+    id: "noise-cancelling",
+    label: localizedText("Noise cancelling", "降噪耳機"),
+    query: localizedText("noise cancelling", "降噪耳機"),
+  },
+  {
+    id: "travel-carry",
+    label: localizedText("Travel carry", "旅行收納"),
+    query: localizedText("travel carry", "旅行收納"),
+  },
+  {
+    id: "desk-light",
+    label: localizedText("Desk light", "桌燈"),
+    query: localizedText("desk light", "桌燈"),
+  },
+  {
+    id: "smart-home",
+    label: localizedText("Smart home", "智慧家居"),
+    query: localizedText("smart home", "智慧家居"),
+  },
+  {
+    id: "gift-set",
+    label: localizedText("Gift set", "送禮套裝"),
+    query: localizedText("gift set", "送禮套裝"),
+  },
+  {
+    id: "gan-charger",
+    label: localizedText("GaN charger", "GaN 充電器"),
+    query: localizedText("GaN charger", "GaN 充電器"),
+  },
+];
+
+export const searchServiceLinks: ContentLink[] = [
+  {
+    id: "tracking",
+    href: "/account/tracking",
+    title: localizedText("Track an order", "追蹤訂單"),
+    description: localizedText(
+      "Check milestones, delivery windows, and the next courier handoff.",
+      "查看物流節點、預計送達時段與下一個交付安排。",
+    ),
+  },
+  {
+    id: "offers",
+    href: "/offers",
+    title: localizedText("Explore current offers", "查看當前禮遇"),
+    description: localizedText(
+      "See bundle privileges, gifting incentives, and seasonal price advantages.",
+      "查看套裝禮遇、送禮優惠與當季價格安排。",
+    ),
+  },
+  {
+    id: "care",
+    href: "/contact",
+    title: localizedText("Speak with client care", "聯絡客戶服務"),
+    description: localizedText(
+      "Reach Velora for gifting advice, address changes, or product guidance.",
+      "如需送禮建議、改址或產品建議，可直接聯絡 Velora。",
+    ),
+  },
+];
+
+export const accountQuickPaths: ContentLink[] = [
+  {
+    id: "orders",
+    href: "/account/orders",
+    title: localizedText("Order history", "訂單紀錄"),
+    description: localizedText(
+      "Review every order, payment method, and aftercare status.",
+      "查看每筆訂單、付款方式與售後狀態。",
+    ),
+  },
+  {
+    id: "tracking",
+    href: "/account/tracking",
+    title: localizedText("Tracking", "物流追蹤"),
+    description: localizedText(
+      "Follow delivery milestones and the next handoff point.",
+      "持續掌握目前配送進度與每一個節點。",
+    ),
+  },
+  {
+    id: "wishlist",
+    href: "/wishlist",
+    title: localizedText("Wishlist", "收藏清單"),
+    description: localizedText(
+      "Keep pieces you want to compare, gift, or revisit later.",
+      "保留想比較、送禮或之後回購的商品。",
+    ),
+  },
+  {
+    id: "contact",
+    href: "/contact",
+    title: localizedText("Contact care", "聯絡顧問"),
+    description: localizedText(
+      "Reach client care for gifting, address changes, or replacements.",
+      "需要送禮、改址或補件支援時可直接聯絡。",
+    ),
+  },
+];
+
+export const accountMembershipBenefits: LocalizedText[] = [
+  localizedText(
+    "Studio pickup and delivery rhythm can be adjusted around your schedule.",
+    "工作室取貨與配送節奏可依需求調整。",
+  ),
+  localizedText(
+    "Higher-value purchases receive more deliberate gifting and aftercare support.",
+    "高價值訂單可享較細緻的送禮與售後協助。",
+  ),
+  localizedText(
+    "Saved products and purchase history help refine the next recommendation set.",
+    "收藏與購買紀錄會用來優化下一次推薦。",
+  ),
+];
+
+export const helpQuickPaths: ContentLink[] = [
+  {
+    id: "track",
+    href: "/account/tracking",
+    title: localizedText("Track an order", "追蹤訂單"),
+    description: localizedText(
+      "View delivery milestones, expected arrival windows, and recipient details.",
+      "查看物流節點、預計送達時間與收件資訊。",
+    ),
+  },
+  {
+    id: "returns",
+    href: "/contact",
+    title: localizedText("Start a return or exchange", "安排退換貨"),
+    description: localizedText(
+      "Get direct support for size changes, colour swaps, or return requests.",
+      "針對尺寸、顏色或商品狀態提供直接協助。",
+    ),
+  },
+  {
+    id: "care",
+    href: "/contact",
+    title: localizedText("Book client care", "預約顧問服務"),
+    description: localizedText(
+      "Ask for gifting advice, product pairing guidance, or a studio appointment.",
+      "取得送禮建議、搭配推薦或到店諮詢安排。",
+    ),
+  },
+];
+
+export const helpServiceStandards: LabelValue[] = [
+  {
+    value: localizedText("Within one business day", "1 個工作天內"),
+    label: localizedText("Email response target", "電郵與諮詢回覆目標"),
+  },
+  {
+    value: localizedText("10:00 - 19:00", "10:00 - 19:00"),
+    label: localizedText("Priority line coverage", "優先專線服務時段"),
+  },
+  {
+    value: localizedText("Same-day by appointment", "當日可預約"),
+    label: localizedText("Studio pickup and consultations", "工作室取貨與體驗安排"),
   },
 ];
 

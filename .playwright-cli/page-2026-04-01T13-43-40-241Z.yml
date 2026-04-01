@@ -1,0 +1,583 @@
+- generic:
+  - generic:
+    - banner:
+      - generic:
+        - generic:
+          - link:
+            - /url: /zh-Hant
+            - text: Velora
+        - generic:
+          - button [expanded]:
+            - img
+            - generic: "2"
+          - button:
+            - img
+    - main:
+      - generic:
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - generic: 為從容而連結的生活而設計。
+                - generic:
+                  - heading [level=1]: 把精緻科技與隨行器物，帶進更從容的日常節奏。
+                  - paragraph: Velora 以精緻工藝重新詮釋科技、隨行收納與居家物件，為講究秩序與質感的生活而生。
+                - generic:
+                  - link:
+                    - /url: /zh-Hant/shop
+                    - text: 探索完整系列
+                  - link:
+                    - /url: /zh-Hant/about
+                    - text: 閱讀品牌故事
+                - generic:
+                  - generic:
+                    - img
+                    - paragraph: 亞太地區快速配送
+                  - generic:
+                    - img
+                    - paragraph: 30 天安心退貨
+                  - generic:
+                    - img
+                    - paragraph: 七日專屬顧問服務
+            - generic:
+              - link:
+                - /url: /zh-Hant/products/arc-one-headphones
+                - generic:
+                  - generic:
+                    - generic:
+                      - paragraph: 主視角
+                      - paragraph: 以精準材質重塑佩戴舒適。
+                  - generic:
+                    - generic:
+                      - paragraph: Arc One 頭戴式耳機
+                      - paragraph: 結合自適應靜音模式與長時間舒適配戴的旗艦級無線耳機。
+                    - img
+              - link:
+                - /url: /zh-Hant/products/meridian-weekender
+                - generic:
+                  - generic:
+                    - generic:
+                      - paragraph: 正面
+                      - paragraph: 在克制的設計中保有完整機能。
+                  - generic:
+                    - generic:
+                      - paragraph: Meridian 旅行袋
+                      - paragraph: 以平衡受力與高質感防潑材質打造的結構型旅行袋。
+                    - img
+              - link:
+                - /url: /zh-Hant/products/frame-s-display
+                - generic:
+                  - generic:
+                    - generic:
+                      - paragraph: 正面
+                      - paragraph: 即使待機，也像家中的一件安靜擺設。
+                  - generic:
+                    - generic:
+                      - paragraph: Frame S 智慧顯示器
+                      - paragraph: 以柔和輪廓呈現的智慧顯示器，適合管理家中行程、資訊與共享相簿。
+                    - img
+        - generic:
+          - generic:
+            - paragraph: 分類導覽
+            - heading [level=2]: 依照你的生活方式，探索 Velora 的完整系列。
+            - paragraph: 從聆聽、桌面、居家到隨行收納，以清晰結構整理整個系列。
+          - generic:
+            - link:
+              - /url: /zh-Hant/categories/audio
+              - paragraph: 聲音表現
+              - paragraph: 音訊
+              - paragraph: 為長時間配戴、安靜專注與流動生活而調校的無線聆聽體驗。
+            - link:
+              - /url: /zh-Hant/categories/workspace
+              - paragraph: 專注工作
+              - paragraph: 工作桌面
+              - paragraph: 以安靜而有效率的工具，整理整天的桌面秩序與工作節奏。
+            - link:
+              - /url: /zh-Hant/categories/smart-living
+              - paragraph: 低調智能
+              - paragraph: 智慧生活
+              - paragraph: 低視覺干擾、卻能真正提升日常效率的智慧居家產品。
+            - link:
+              - /url: /zh-Hant/categories/personal-carry
+              - paragraph: 移動生活
+              - paragraph: 隨行收納
+              - paragraph: 為通勤、旅行與送禮而設計的包款與皮件。
+            - link:
+              - /url: /zh-Hant/categories/travel-power
+              - paragraph: 簡化供電
+              - paragraph: 旅途供電
+              - paragraph: 為旅途中與桌面上提供高效率供電，卻不造成視覺雜訊的關鍵配件。
+        - generic:
+          - generic:
+            - paragraph: 焦點選品
+            - heading [level=2]: 春季選品
+            - paragraph: 圍繞通勤、差旅與安靜居家時刻，整理出更貼近日常的季節選品。
+          - generic:
+            - article:
+              - generic:
+                - link:
+                  - /url: /zh-Hant/products/arc-one-headphones
+                  - generic:
+                    - generic:
+                      - paragraph: 主視角
+                      - paragraph: 以精準材質重塑佩戴舒適。
+                - button:
+                  - img
+              - generic:
+                - generic:
+                  - paragraph: 音訊
+                  - generic: "-13%"
+                - generic:
+                  - link:
+                    - /url: /zh-Hant/products/arc-one-headphones
+                    - text: Arc One 頭戴式耳機
+                  - paragraph: 結合自適應靜音模式與長時間舒適配戴的旗艦級無線耳機。
+                - generic:
+                  - generic:
+                    - img
+                    - img
+                    - img
+                    - img
+                    - img
+                  - generic: "4.9"
+                  - generic: "128"
+                - generic:
+                  - generic:
+                    - paragraph: HK$3,290
+                    - paragraph: HK$3,790
+                  - button:
+                    - img
+                    - text: 加入
+            - article:
+              - generic:
+                - link:
+                  - /url: /zh-Hant/products/halo-mini-speaker
+                  - generic:
+                    - generic:
+                      - paragraph: 正面
+                      - paragraph: 在小巧機身中保有溫潤聲場。
+                - button:
+                  - img
+              - generic:
+                - generic:
+                  - paragraph: 音訊
+                  - generic: "-11%"
+                - generic:
+                  - link:
+                    - /url: /zh-Hant/products/halo-mini-speaker
+                    - text: Halo Mini 便攜音箱
+                  - paragraph: 以雕塑感機身帶來飽滿聲場，並配備直覺式觸控操作的便攜音箱。
+                - generic:
+                  - generic:
+                    - img
+                    - img
+                    - img
+                    - img
+                    - img
+                  - generic: "4.8"
+                  - generic: "94"
+                - generic:
+                  - generic:
+                    - paragraph: HK$1,690
+                    - paragraph: HK$1,890
+                  - button:
+                    - img
+                    - text: 加入
+            - article:
+              - generic:
+                - link:
+                  - /url: /zh-Hant/products/flux-pocket-earbuds
+                  - generic:
+                    - generic:
+                      - paragraph: 充電盒
+                      - paragraph: 為日常攜帶而設計的薄型盒身。
+                - button:
+                  - img
+              - generic:
+                - generic:
+                  - paragraph: 音訊
+                  - generic: "-12%"
+                - generic:
+                  - link:
+                    - /url: /zh-Hant/products/flux-pocket-earbuds
+                    - text: Flux Pocket 真無線耳機
+                  - paragraph: 小巧俐落的日常耳機，兼具清晰通話、自適應降噪與低調充電盒設計。
+                - generic:
+                  - generic:
+                    - img
+                    - img
+                    - img
+                    - img
+                    - img
+                  - generic: "4.7"
+                  - generic: "161"
+                - generic:
+                  - generic:
+                    - paragraph: HK$1,480
+                    - paragraph: HK$1,680
+                  - button:
+                    - img
+                    - text: 加入
+            - article:
+              - generic:
+                - link:
+                  - /url: /zh-Hant/products/studio-dock-140
+                  - generic:
+                    - generic:
+                      - paragraph: 產品輪廓
+                      - paragraph: 將供電、支撐與秩序收納於同一底座。
+                - button:
+                  - img
+              - generic:
+                - generic:
+                  - paragraph: 旅途供電
+                  - generic: "-17%"
+                - generic:
+                  - link:
+                    - /url: /zh-Hant/products/studio-dock-140
+                    - text: Studio Dock 140 多功能充電底座
+                  - paragraph: 以雕塑感外型整合筆電供電、裝置支架與理線功能的 GaN 充電底座。
+                - generic:
+                  - generic:
+                    - img
+                    - img
+                    - img
+                    - img
+                    - img
+                  - generic: "4.8"
+                  - generic: "73"
+                - generic:
+                  - generic:
+                    - paragraph: HK$980
+                    - paragraph: HK$1,180
+                  - button:
+                    - img
+                    - text: 加入
+        - generic:
+          - generic:
+            - generic:
+              - generic:
+                - paragraph: 品牌觀點
+                - heading [level=2]: 沉靜、實用且值得長久相處的設計。
+                - paragraph: 以秩序取代堆砌，以材質與工藝取代噱頭，並讓服務品質與產品本身同樣周到。
+              - generic:
+                - generic:
+                  - paragraph: 克制而精準的設計
+                  - paragraph: "每件作品都回到真正會被使用的核心價值: 舒適、清晰、實用，以及對材質的坦率表達。"
+                - generic:
+                  - paragraph: 為移動中的生活而設計
+                  - paragraph: Velora 的產品系統從通勤、混合辦公與都會居住情境出發，回應真實生活節奏。
+                - generic:
+                  - paragraph: 記得你的服務體驗
+                  - paragraph: 快速出貨、細緻支援與完善售後，被視為產品承諾的一部分，而非額外附加。
+            - generic:
+              - generic:
+                - paragraph: 客戶服務
+                - paragraph: 專屬顧問
+                - paragraph: 提供選購建議、送禮諮詢與設定支援，七天皆可聯絡。
+                - paragraph: care@velora.house
+              - generic:
+                - paragraph: 客戶服務
+                - paragraph: 優先專線
+                - paragraph: 適用於急件追蹤、配送變更與更換安排。
+                - paragraph: +852 3568 2180
+              - generic:
+                - paragraph: 客戶服務
+                - paragraph: 中環工作室
+                - paragraph: 可預約到店取貨與產品體驗諮詢。
+                - paragraph: 20/F, Alexandra House, Central
+        - generic:
+          - generic:
+            - paragraph: 推薦商品
+            - heading [level=2]: 能自然搭配進同一種生活節奏的作品。
+            - paragraph: 適合通勤、混合辦公與注重質感的現代生活。
+          - generic:
+            - article:
+              - generic:
+                - link:
+                  - /url: /zh-Hant/products/loom-wireless-keyboard
+                  - generic:
+                    - generic:
+                      - paragraph: 鍵盤俯視
+                      - paragraph: 把安靜手感與細節質感結合。
+                - button:
+                  - img
+              - generic:
+                - generic:
+                  - paragraph: 工作桌面
+                  - generic: "-14%"
+                - generic:
+                  - link:
+                    - /url: /zh-Hant/products/loom-wireless-keyboard
+                    - text: Loom 無線鍵盤
+                  - paragraph: 為深度工作與多裝置切換而設計的低噪聲、具手感的無線鍵盤。
+                - generic:
+                  - generic:
+                    - img
+                    - img
+                    - img
+                    - img
+                    - img
+                  - generic: "4.9"
+                  - generic: "117"
+                - generic:
+                  - generic:
+                    - paragraph: HK$1,280
+                    - paragraph: HK$1,480
+                  - button:
+                    - img
+                    - text: 加入
+            - article:
+              - generic:
+                - link:
+                  - /url: /zh-Hant/products/lumen-desk-light
+                  - generic:
+                    - generic:
+                      - paragraph: 正面
+                      - paragraph: 低視覺干擾的建築感照明。
+                - button:
+                  - img
+              - generic:
+                - generic:
+                  - paragraph: 工作桌面
+                  - generic: "-14%"
+                - generic:
+                  - link:
+                    - /url: /zh-Hant/products/lumen-desk-light
+                    - text: Lumen 桌面燈
+                  - paragraph: 兼具無眩光工作照明與側向氛圍光的桌燈，可快速切換不同工作情境。
+                - generic:
+                  - generic:
+                    - img
+                    - img
+                    - img
+                    - img
+                    - img
+                  - generic: "4.8"
+                  - generic: "89"
+                - generic:
+                  - generic:
+                    - paragraph: HK$1,180
+                    - paragraph: HK$1,380
+                  - button:
+                    - img
+                    - text: 加入
+            - article:
+              - generic:
+                - link:
+                  - /url: /zh-Hant/products/forma-sling
+                  - generic:
+                    - generic:
+                      - paragraph: 正面輪廓
+                      - paragraph: 小巧體積中保有高度思考過的收納方式。
+                - button:
+                  - img
+              - generic:
+                - generic:
+                  - paragraph: 隨行收納
+                  - generic: "-17%"
+                - generic:
+                  - link:
+                    - /url: /zh-Hant/products/forma-sling
+                    - text: Forma 斜背包
+                  - paragraph: 結合模組化分層、隱藏護照夾層與俐落輪廓的小型斜背包。
+                - generic:
+                  - generic:
+                    - img
+                    - img
+                    - img
+                    - img
+                    - img
+                  - generic: "4.8"
+                  - generic: "108"
+                - generic:
+                  - generic:
+                    - paragraph: HK$980
+                    - paragraph: HK$1,180
+                  - button:
+                    - img
+                    - text: 加入
+            - article:
+              - generic:
+                - link:
+                  - /url: /zh-Hant/products/orbit-gan-charger
+                  - generic:
+                    - generic:
+                      - paragraph: 主視角
+                      - paragraph: 在精巧機身中實現高輸出充電。
+                - button:
+                  - img
+              - generic:
+                - generic:
+                  - paragraph: 旅途供電
+                  - generic: "-11%"
+                - generic:
+                  - link:
+                    - /url: /zh-Hant/products/orbit-gan-charger
+                    - text: Orbit GaN 旅充
+                  - paragraph: 兼具 140 W 輸出、三孔配置與摺疊式外型的高效 GaN 充電器。
+                - generic:
+                  - generic:
+                    - img
+                    - img
+                    - img
+                    - img
+                    - img
+                  - generic: "4.8"
+                  - generic: "139"
+                - generic:
+                  - generic:
+                    - paragraph: HK$880
+                    - paragraph: HK$990
+                  - button:
+                    - img
+                    - text: 加入
+    - contentinfo:
+      - generic:
+        - generic:
+          - paragraph: Velora
+          - paragraph: 來自香港的精緻音訊、隨行收納與智慧生活器物。
+        - generic:
+          - paragraph: 選購
+          - generic:
+            - link:
+              - /url: /zh-Hant/shop
+              - text: 全部商品
+            - link:
+              - /url: /zh-Hant/offers
+              - text: 優惠活動
+            - link:
+              - /url: /zh-Hant/wishlist
+              - text: 收藏清單
+        - generic:
+          - paragraph: 服務
+          - generic:
+            - link:
+              - /url: /zh-Hant/account/tracking
+              - text: 訂單追蹤
+            - link:
+              - /url: /zh-Hant/help
+              - text: 支援中心
+            - link:
+              - /url: /zh-Hant/contact
+              - text: 聯絡我們
+        - generic:
+          - paragraph: 品牌
+          - generic:
+            - link:
+              - /url: /zh-Hant/about
+              - text: 關於 Velora
+            - link:
+              - /url: /zh-Hant/account
+              - text: 會員中心
+            - link:
+              - /url: /zh-Hant/admin
+              - text: 營運後台
+  - region "Notifications alt+T"
+  - alert
+  - dialog "你的購物袋" [ref=e624]:
+    - generic [ref=e625]:
+      - generic [ref=e626]:
+        - heading "你的購物袋" [level=2] [ref=e627]
+        - paragraph [ref=e628]: 檢視已選商品、調整數量，或先加入稍後再買。
+      - generic [ref=e629]:
+        - paragraph [ref=e630]: 已準備進入結帳
+        - generic [ref=e631]:
+          - generic [ref=e632]:
+            - paragraph [ref=e633]: HK$3,958
+            - paragraph [ref=e634]: 約 2 至 4 個工作天送達
+          - generic [ref=e635]: 2 件商品
+      - generic:
+        - generic [ref=e637]:
+          - generic [ref=e638]:
+            - generic [ref=e639]:
+              - paragraph [ref=e640]: 音訊
+              - paragraph [ref=e641]: Arc One 頭戴式耳機
+              - paragraph [ref=e642]: 曜石黑 · 標準版
+            - generic [ref=e643]:
+              - button "減少 Arc One 頭戴式耳機 的數量" [active] [ref=e644]:
+                - img [ref=e645]
+              - generic [ref=e646]: "1"
+              - button "增加 Arc One 頭戴式耳機 的數量" [ref=e647]:
+                - img [ref=e648]
+            - generic [ref=e649]:
+              - button "稍後再買" [ref=e650]
+              - button "移除" [ref=e651]:
+                - img [ref=e652]
+                - text: 移除
+          - paragraph [ref=e655]: HK$3,290
+        - generic [ref=e657]:
+          - generic [ref=e658]:
+            - generic [ref=e659]:
+              - paragraph [ref=e660]: 旅途供電
+              - paragraph [ref=e661]: Studio Dock 140 多功能充電底座
+              - paragraph [ref=e662]: 石墨灰 · 香港插腳
+            - generic [ref=e663]:
+              - button "減少 Studio Dock 140 多功能充電底座 的數量" [ref=e664]:
+                - img [ref=e665]
+              - generic [ref=e666]: "1"
+              - button "增加 Studio Dock 140 多功能充電底座 的數量" [ref=e667]:
+                - img [ref=e668]
+            - generic [ref=e669]:
+              - button "稍後再買" [ref=e670]
+              - button "移除" [ref=e671]:
+                - img [ref=e672]
+                - text: 移除
+          - paragraph [ref=e675]: HK$980
+        - generic [ref=e676]:
+          - generic [ref=e677]:
+            - paragraph [ref=e678]: 適合一起加入
+            - paragraph [ref=e679]: 幾件能自然補足目前購物袋配置的精選商品。
+          - generic [ref=e680]:
+            - generic [ref=e682]:
+              - generic [ref=e683]:
+                - paragraph [ref=e684]: Meridian 旅行袋
+                - paragraph [ref=e685]: 以平衡受力與高質感防潑材質打造的結構型旅行袋。
+                - paragraph [ref=e686]: HK$2,280
+              - button "加入" [ref=e687]:
+                - img [ref=e688]
+                - text: 加入
+            - generic [ref=e692]:
+              - generic [ref=e693]:
+                - paragraph [ref=e694]: Flux Pocket 真無線耳機
+                - paragraph [ref=e695]: 小巧俐落的日常耳機，兼具清晰通話、自適應降噪與低調充電盒設計。
+                - paragraph [ref=e696]: HK$1,480
+              - button "加入" [ref=e697]:
+                - img [ref=e698]
+                - text: 加入
+      - generic [ref=e701]:
+        - generic [ref=e702]:
+          - generic [ref=e703]:
+            - generic [ref=e704]: 小計
+            - generic [ref=e705]: HK$4,270
+          - generic [ref=e706]:
+            - generic [ref=e707]: 優惠折扣
+            - generic [ref=e708]: "-HK$427"
+          - generic [ref=e709]:
+            - generic [ref=e710]: 運費
+            - generic [ref=e711]: 免費
+          - generic [ref=e712]:
+            - generic [ref=e713]: 稅項與手續費
+            - generic [ref=e714]: HK$115
+        - generic [ref=e715]:
+          - generic [ref=e716]:
+            - paragraph [ref=e717]: 免運配送
+            - paragraph [ref=e718]: 免費
+          - paragraph [ref=e719]: 約 2 至 4 個工作天送達
+          - paragraph [ref=e720]: 由 Velora 合作快遞配送，並提供完整物流節點通知。
+          - paragraph [ref=e721]: FIRSTLIGHT
+        - generic [ref=e722]:
+          - generic [ref=e723]: 滿 HK$1,200 享免運配送
+          - generic [ref=e724]: 30 天安心退貨
+          - generic [ref=e725]: 七日專屬顧問服務
+        - generic [ref=e726]:
+          - generic [ref=e727]: 合計
+          - generic [ref=e728]: HK$3,958
+        - generic [ref=e729]:
+          - link "前往結帳" [ref=e730] [cursor=pointer]:
+            - /url: /zh-Hant/checkout
+          - link "查看完整購物袋" [ref=e731] [cursor=pointer]:
+            - /url: /zh-Hant/cart
+    - button "關閉" [ref=e732]:
+      - img [ref=e733]
+      - generic [ref=e736]: 關閉

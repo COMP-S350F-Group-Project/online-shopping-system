@@ -58,9 +58,9 @@ function SectionPanel({
   copy?: string;
 }>) {
   return (
-    <section className="rounded-[32px] border border-[var(--line)] bg-white/75 p-6 backdrop-blur">
+    <section className="rounded-[32px] border border-[var(--line)] bg-white/75 p-5 backdrop-blur md:p-6">
       <div className="mb-5 space-y-2">
-        <h2 className="font-display text-3xl">{title}</h2>
+        <h2 className="font-display text-[1.7rem] leading-tight md:text-3xl">{title}</h2>
         {copy ? <p className="text-sm leading-7 text-slate-600">{copy}</p> : null}
       </div>
       {children}
@@ -115,7 +115,7 @@ export function CheckoutExperience({ locale }: { locale: Locale }) {
         : t("checkout.placeOrder");
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[1.14fr_0.86fr]">
+    <div className="grid gap-8 pb-28 lg:grid-cols-[1.14fr_0.86fr] lg:pb-0">
       <form
         id="checkout-form"
         className="space-y-6"
@@ -180,7 +180,7 @@ export function CheckoutExperience({ locale }: { locale: Locale }) {
           }, 700);
         }}
       >
-        <div className="grid gap-3 md:grid-cols-3">
+        <div className="grid auto-cols-[minmax(220px,82%)] grid-flow-col gap-3 overflow-x-auto pb-1 md:grid-cols-3 md:grid-flow-row md:auto-cols-auto md:overflow-visible">
           {[
             {
               icon: LockKeyhole,
@@ -257,12 +257,14 @@ export function CheckoutExperience({ locale }: { locale: Locale }) {
         </SectionPanel>
 
         <SectionPanel copy={t("checkout.deliveryMethodCopy")} title={t("checkout.deliveryMethod")}>
-          <div className="grid gap-3">
+          <div aria-label={t("checkout.deliveryMethod")} className="grid gap-3" role="radiogroup">
             {shippingMethods.map((method) => {
               const option = getShippingOptionContent(method, locale);
 
               return (
                 <button
+                  aria-checked={method === shippingMethod}
+                  aria-describedby={`checkout-shipping-${method}`}
                   key={method}
                   className={cn(
                     "rounded-[26px] border px-5 py-4 text-left transition",
@@ -271,6 +273,7 @@ export function CheckoutExperience({ locale }: { locale: Locale }) {
                       : "border-[var(--line)] bg-white/70 hover:bg-white",
                   )}
                   onClick={() => setShippingMethod(method)}
+                  role="radio"
                   type="button"
                 >
                   <div className="flex flex-wrap items-start justify-between gap-3">
@@ -282,7 +285,9 @@ export function CheckoutExperience({ locale }: { locale: Locale }) {
                       {option.fee ? formatCurrency(option.fee, locale) : t("common.free")}
                     </p>
                   </div>
-                  <p className="mt-3 text-xs leading-6 text-slate-500">{option.detail}</p>
+                  <p className="mt-3 text-xs leading-6 text-slate-500" id={`checkout-shipping-${method}`}>
+                    {option.detail}
+                  </p>
                 </button>
               );
             })}
@@ -362,8 +367,10 @@ export function CheckoutExperience({ locale }: { locale: Locale }) {
         </SectionPanel>
 
         <SectionPanel copy={t("checkout.paymentCopy")} title={t("checkout.payment")}>
-          <div className="grid gap-3 md:grid-cols-2">
+          <div aria-label={t("checkout.payment")} className="grid gap-3 md:grid-cols-2" role="radiogroup">
             <button
+              aria-checked={paymentMode === "saved"}
+              aria-describedby="checkout-payment-saved"
               className={cn(
                 "rounded-[26px] border px-5 py-4 text-left transition",
                 paymentMode === "saved"
@@ -371,6 +378,7 @@ export function CheckoutExperience({ locale }: { locale: Locale }) {
                   : "border-[var(--line)] bg-white/70 hover:bg-white",
               )}
               onClick={() => setPaymentMode("saved")}
+              role="radio"
               type="button"
             >
               <div className="flex items-start justify-between gap-3">
@@ -382,10 +390,14 @@ export function CheckoutExperience({ locale }: { locale: Locale }) {
                 </div>
                 <CreditCard className="h-5 w-5 text-[var(--accent)]" />
               </div>
-              <p className="mt-3 text-xs leading-6 text-slate-500">{t("checkout.savedCardCopy")}</p>
+              <p className="mt-3 text-xs leading-6 text-slate-500" id="checkout-payment-saved">
+                {t("checkout.savedCardCopy")}
+              </p>
             </button>
 
             <button
+              aria-checked={paymentMode === "new"}
+              aria-describedby="checkout-payment-new"
               className={cn(
                 "rounded-[26px] border px-5 py-4 text-left transition",
                 paymentMode === "new"
@@ -393,15 +405,18 @@ export function CheckoutExperience({ locale }: { locale: Locale }) {
                   : "border-[var(--line)] bg-white/70 hover:bg-white",
               )}
               onClick={() => setPaymentMode("new")}
+              role="radio"
               type="button"
             >
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <p className="font-semibold text-[var(--ink)]">{t("checkout.newCardTitle")}</p>
-                  <p className="mt-2 text-sm leading-7 text-slate-600">{t("checkout.newCardCopy")}</p>
                 </div>
                 <ShieldCheck className="h-5 w-5 text-[var(--accent)]" />
               </div>
+              <p className="mt-3 text-xs leading-6 text-slate-500" id="checkout-payment-new">
+                {t("checkout.newCardCopy")}
+              </p>
             </button>
           </div>
 
@@ -494,11 +509,16 @@ export function CheckoutExperience({ locale }: { locale: Locale }) {
         </SectionPanel>
       </form>
 
-      <aside className="space-y-5 lg:sticky lg:top-24 lg:self-start">
-        <div className="rounded-[32px] border border-[var(--line)] bg-white/75 p-6 shadow-[0_20px_80px_rgba(15,23,42,0.05)] backdrop-blur">
+      <aside className="order-first space-y-5 lg:order-none lg:sticky lg:top-24 lg:self-start">
+        <div
+          className="rounded-[32px] border border-[var(--line)] bg-white/75 p-5 shadow-[0_20px_80px_rgba(15,23,42,0.05)] backdrop-blur md:p-6"
+          id="checkout-summary"
+        >
           <div className="space-y-5">
             <div className="flex items-center justify-between gap-3">
-              <h2 className="font-display text-3xl">{t("cartPage.summaryTitle")}</h2>
+              <h2 className="font-display text-[1.7rem] leading-tight md:text-3xl">
+                {t("cartPage.summaryTitle")}
+              </h2>
               <p className="text-sm text-slate-500">
                 {locale === "zh-Hant" ? `${itemCount} 件商品` : `${itemCount} items`}
               </p>
@@ -571,7 +591,7 @@ export function CheckoutExperience({ locale }: { locale: Locale }) {
               <p className="mt-2 text-sm leading-7 text-slate-600">{t("checkout.secureSummaryCopy")}</p>
             </div>
 
-            <Button className="w-full" disabled={isSubmitting} form="checkout-form" type="submit">
+            <Button className="hidden w-full lg:inline-flex" disabled={isSubmitting} form="checkout-form" type="submit">
               {isSubmitting ? <LoaderCircle className="h-4 w-4 animate-spin" /> : null}
               {orderButtonLabel}
             </Button>
@@ -582,6 +602,25 @@ export function CheckoutExperience({ locale }: { locale: Locale }) {
           </div>
         </div>
       </aside>
+
+      <div className="fixed inset-x-4 bottom-[calc(env(safe-area-inset-bottom)+0.8rem)] z-30 lg:hidden">
+        <div className="rounded-[26px] border border-[var(--line)] bg-[rgba(249,246,239,0.94)] p-3 shadow-[0_24px_60px_rgba(15,23,42,0.14)] backdrop-blur-xl">
+          <div className="flex items-center gap-3">
+            <div className="min-w-0 flex-1">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">
+                {t("checkout.mobileTotalLabel")}
+              </p>
+              <p className="mt-1 truncate font-display text-2xl text-[var(--ink)]">
+                {formatCurrency(summary.total, locale)}
+              </p>
+            </div>
+            <Button className="min-w-[10rem]" disabled={isSubmitting} form="checkout-form" type="submit">
+              {isSubmitting ? <LoaderCircle className="h-4 w-4 animate-spin" /> : null}
+              {orderButtonLabel}
+            </Button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

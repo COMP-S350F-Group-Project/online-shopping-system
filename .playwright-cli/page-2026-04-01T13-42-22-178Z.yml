@@ -1,0 +1,442 @@
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - link "Velora" [ref=e6] [cursor=pointer]:
+          - /url: /en
+        - generic [ref=e13]:
+          - button "Bag" [ref=e29]:
+            - img [ref=e30]
+            - generic [ref=e33]: "2"
+          - button "Open menu" [active] [ref=e621]:
+            - img [ref=e622]
+    - main [ref=e34]:
+      - generic [ref=e35]:
+        - generic [ref=e37]:
+          - generic [ref=e40]:
+            - generic [ref=e41]: Designed for calm, connected living.
+            - generic [ref=e42]:
+              - heading "Refined technology and carry for a calmer everyday rhythm." [level=1] [ref=e43]
+              - paragraph [ref=e44]: Velora creates precision-crafted technology, personal carry, and home objects for people who value clarity in the way they live.
+            - generic [ref=e45]:
+              - link "Explore the full collection" [ref=e46] [cursor=pointer]:
+                - /url: /en/shop
+              - link "Read the brand story" [ref=e47] [cursor=pointer]:
+                - /url: /en/about
+            - generic [ref=e48]:
+              - generic [ref=e49]:
+                - img [ref=e50]
+                - paragraph [ref=e55]: Fast APAC delivery
+              - generic [ref=e56]:
+                - img [ref=e57]
+                - paragraph [ref=e60]: 30-day returns
+              - generic [ref=e61]:
+                - img [ref=e62]
+                - paragraph [ref=e65]: Seven-day concierge support
+          - generic [ref=e66]:
+            - link "Hero angle Balanced comfort with precision materials. Arc One Headphones Reference-grade wireless headphones with adaptive quiet modes and all-day comfort." [ref=e67] [cursor=pointer]:
+              - /url: /en/products/arc-one-headphones
+              - generic [ref=e68]:
+                - generic [ref=e77]:
+                  - paragraph [ref=e78]: Hero angle
+                  - paragraph [ref=e79]: Balanced comfort with precision materials.
+                - generic [ref=e80]:
+                  - generic [ref=e81]:
+                    - paragraph [ref=e82]: Arc One Headphones
+                    - paragraph [ref=e83]: Reference-grade wireless headphones with adaptive quiet modes and all-day comfort.
+                  - img [ref=e84]
+            - link "Bag front Structured carry with premium restraint. Meridian Weekender A structured travel bag with balanced carry geometry and premium weather-resistant materials." [ref=e86] [cursor=pointer]:
+              - /url: /en/products/meridian-weekender
+              - generic [ref=e87]:
+                - generic [ref=e96]:
+                  - paragraph [ref=e97]: Bag front
+                  - paragraph [ref=e98]: Structured carry with premium restraint.
+                - generic [ref=e99]:
+                  - generic [ref=e100]:
+                    - paragraph [ref=e101]: Meridian Weekender
+                    - paragraph [ref=e102]: A structured travel bag with balanced carry geometry and premium weather-resistant materials.
+                  - img [ref=e103]
+            - link "Display front Looks at home even when idle. Frame S Display A soft-edged smart display for home scheduling, ambient information, and family sharing." [ref=e105] [cursor=pointer]:
+              - /url: /en/products/frame-s-display
+              - generic [ref=e106]:
+                - generic [ref=e114]:
+                  - paragraph [ref=e115]: Display front
+                  - paragraph [ref=e116]: Looks at home even when idle.
+                - generic [ref=e117]:
+                  - generic [ref=e118]:
+                    - paragraph [ref=e119]: Frame S Display
+                    - paragraph [ref=e120]: A soft-edged smart display for home scheduling, ambient information, and family sharing.
+                  - img [ref=e121]
+        - generic [ref=e123]:
+          - generic [ref=e124]:
+            - paragraph [ref=e125]: Shop by category
+            - heading "Explore Velora through the way you live and move." [level=2] [ref=e126]
+            - paragraph [ref=e127]: Explore the collection through audio, workspace, home, travel, and personal-carry lenses.
+          - generic [ref=e128]:
+            - link "Acoustic clarity Audio Wireless listening designed for long days, quiet focus, and refined mobility." [ref=e129] [cursor=pointer]:
+              - /url: /en/categories/audio
+              - paragraph [ref=e130]: Acoustic clarity
+              - paragraph [ref=e131]: Audio
+              - paragraph [ref=e132]: Wireless listening designed for long days, quiet focus, and refined mobility.
+            - link "Focus, refined Workspace Quiet tools that create order, flow, and visual calm across the workday." [ref=e133] [cursor=pointer]:
+              - /url: /en/categories/workspace
+              - paragraph [ref=e134]: Focus, refined
+              - paragraph [ref=e135]: Workspace
+              - paragraph [ref=e136]: Quiet tools that create order, flow, and visual calm across the workday.
+            - link "Quiet intelligence Smart living Home technology with low visual noise and practical everyday intelligence." [ref=e137] [cursor=pointer]:
+              - /url: /en/categories/smart-living
+              - paragraph [ref=e138]: Quiet intelligence
+              - paragraph [ref=e139]: Smart living
+              - paragraph [ref=e140]: Home technology with low visual noise and practical everyday intelligence.
+            - link "Made for movement Personal carry Bags and small leather goods engineered for transit, gifting, and daily movement." [ref=e141] [cursor=pointer]:
+              - /url: /en/categories/personal-carry
+              - paragraph [ref=e142]: Made for movement
+              - paragraph [ref=e143]: Personal carry
+              - paragraph [ref=e144]: Bags and small leather goods engineered for transit, gifting, and daily movement.
+            - link "Power, reduced Travel power Power and docking essentials that keep devices ready without visual clutter." [ref=e145] [cursor=pointer]:
+              - /url: /en/categories/travel-power
+              - paragraph [ref=e146]: Power, reduced
+              - paragraph [ref=e147]: Travel power
+              - paragraph [ref=e148]: Power and docking essentials that keep devices ready without visual clutter.
+        - generic [ref=e149]:
+          - generic [ref=e150]:
+            - paragraph [ref=e151]: Featured edit
+            - heading "Spring Edit" [level=2] [ref=e152]
+            - paragraph [ref=e153]: A seasonal edit shaped for commuting, travel, and quieter evenings at home.
+          - generic [ref=e154]:
+            - article [ref=e155]:
+              - generic [ref=e156]:
+                - link "Hero angle Balanced comfort with precision materials." [ref=e157] [cursor=pointer]:
+                  - /url: /en/products/arc-one-headphones
+                  - generic [ref=e166]:
+                    - paragraph [ref=e167]: Hero angle
+                    - paragraph [ref=e168]: Balanced comfort with precision materials.
+                - button "Save" [ref=e169]:
+                  - img [ref=e170]
+              - generic [ref=e172]:
+                - generic [ref=e173]:
+                  - paragraph [ref=e174]: Audio
+                  - generic [ref=e175]: "-13%"
+                - generic [ref=e176]:
+                  - link "Arc One Headphones" [ref=e177] [cursor=pointer]:
+                    - /url: /en/products/arc-one-headphones
+                  - paragraph [ref=e178]: Reference-grade wireless headphones with adaptive quiet modes and all-day comfort.
+                - generic [ref=e179]:
+                  - generic [ref=e180]:
+                    - img [ref=e181]
+                    - img [ref=e183]
+                    - img [ref=e185]
+                    - img [ref=e187]
+                    - img [ref=e189]
+                  - generic [ref=e191]: "4.9"
+                  - generic [ref=e192]: "128"
+                - generic [ref=e193]:
+                  - generic [ref=e194]:
+                    - paragraph [ref=e195]: HK$3,290
+                    - paragraph [ref=e196]: HK$3,790
+                  - button "Add" [ref=e197]:
+                    - img [ref=e198]
+                    - text: Add
+            - article [ref=e201]:
+              - generic [ref=e202]:
+                - link "Front Warm sound in a compact volume." [ref=e203] [cursor=pointer]:
+                  - /url: /en/products/halo-mini-speaker
+                  - generic [ref=e211]:
+                    - paragraph [ref=e212]: Front
+                    - paragraph [ref=e213]: Warm sound in a compact volume.
+                - button "Save" [ref=e214]:
+                  - img [ref=e215]
+              - generic [ref=e217]:
+                - generic [ref=e218]:
+                  - paragraph [ref=e219]: Audio
+                  - generic [ref=e220]: "-11%"
+                - generic [ref=e221]:
+                  - link "Halo Mini Speaker" [ref=e222] [cursor=pointer]:
+                    - /url: /en/products/halo-mini-speaker
+                  - paragraph [ref=e223]: Portable room-filling sound with a sculpted shell and intuitive touch controls.
+                - generic [ref=e224]:
+                  - generic [ref=e225]:
+                    - img [ref=e226]
+                    - img [ref=e228]
+                    - img [ref=e230]
+                    - img [ref=e232]
+                    - img [ref=e234]
+                  - generic [ref=e236]: "4.8"
+                  - generic [ref=e237]: "94"
+                - generic [ref=e238]:
+                  - generic [ref=e239]:
+                    - paragraph [ref=e240]: HK$1,690
+                    - paragraph [ref=e241]: HK$1,890
+                  - button "Add" [ref=e242]:
+                    - img [ref=e243]
+                    - text: Add
+            - article [ref=e246]:
+              - generic [ref=e247]:
+                - link "Case Slim case built for everyday carry." [ref=e248] [cursor=pointer]:
+                  - /url: /en/products/flux-pocket-earbuds
+                  - generic [ref=e257]:
+                    - paragraph [ref=e258]: Case
+                    - paragraph [ref=e259]: Slim case built for everyday carry.
+                - button "Save" [ref=e260]:
+                  - img [ref=e261]
+              - generic [ref=e263]:
+                - generic [ref=e264]:
+                  - paragraph [ref=e265]: Audio
+                  - generic [ref=e266]: "-12%"
+                - generic [ref=e267]:
+                  - link "Flux Pocket Earbuds" [ref=e268] [cursor=pointer]:
+                    - /url: /en/products/flux-pocket-earbuds
+                  - paragraph [ref=e269]: Compact everyday earbuds with clear calls, adaptive noise control, and a discreet charging case.
+                - generic [ref=e270]:
+                  - generic [ref=e271]:
+                    - img [ref=e272]
+                    - img [ref=e274]
+                    - img [ref=e276]
+                    - img [ref=e278]
+                    - img [ref=e280]
+                  - generic [ref=e282]: "4.7"
+                  - generic [ref=e283]: "161"
+                - generic [ref=e284]:
+                  - generic [ref=e285]:
+                    - paragraph [ref=e286]: HK$1,480
+                    - paragraph [ref=e287]: HK$1,680
+                  - button "Add" [ref=e288]:
+                    - img [ref=e289]
+                    - text: Add
+            - article [ref=e292]:
+              - generic [ref=e293]:
+                - link "Dock profile Power, support, and order in one surface." [ref=e294] [cursor=pointer]:
+                  - /url: /en/products/studio-dock-140
+                  - generic [ref=e302]:
+                    - paragraph [ref=e303]: Dock profile
+                    - paragraph [ref=e304]: Power, support, and order in one surface.
+                - button "Save" [ref=e305]:
+                  - img [ref=e306]
+              - generic [ref=e308]:
+                - generic [ref=e309]:
+                  - paragraph [ref=e310]: Travel power
+                  - generic [ref=e311]: "-17%"
+                - generic [ref=e312]:
+                  - link "Studio Dock 140" [ref=e313] [cursor=pointer]:
+                    - /url: /en/products/studio-dock-140
+                  - paragraph [ref=e314]: A sculpted GaN dock with laptop charging, device stand support, and cable order built in.
+                - generic [ref=e315]:
+                  - generic [ref=e316]:
+                    - img [ref=e317]
+                    - img [ref=e319]
+                    - img [ref=e321]
+                    - img [ref=e323]
+                    - img [ref=e325]
+                  - generic [ref=e327]: "4.8"
+                  - generic [ref=e328]: "73"
+                - generic [ref=e329]:
+                  - generic [ref=e330]:
+                    - paragraph [ref=e331]: HK$980
+                    - paragraph [ref=e332]: HK$1,180
+                  - button "Add" [ref=e333]:
+                    - img [ref=e334]
+                    - text: Add
+        - generic [ref=e338]:
+          - generic [ref=e339]:
+            - generic [ref=e340]:
+              - paragraph [ref=e341]: The Velora point of view
+              - heading "Designed to feel calm, useful, and lasting." [level=2] [ref=e342]
+              - paragraph [ref=e343]: Clarity over clutter, materials over gimmicks, and service that feels as considered as the product itself.
+            - generic [ref=e344]:
+              - generic [ref=e345]:
+                - paragraph [ref=e346]: Crafted restraint
+                - paragraph [ref=e347]: "Every product is reduced to the features people keep using: comfort, clarity, intelligent utility, and material honesty."
+              - generic [ref=e348]:
+                - paragraph [ref=e349]: Made for movement
+                - paragraph [ref=e350]: Velora was shaped around commuting, hybrid work, and the demands of compact urban homes.
+              - generic [ref=e351]:
+                - paragraph [ref=e352]: Service with memory
+                - paragraph [ref=e353]: Fast fulfillment, concierge-level support, and thoughtful aftercare are treated as part of the product promise.
+          - generic [ref=e354]:
+            - generic [ref=e355]:
+              - paragraph [ref=e356]: Client care
+              - paragraph [ref=e357]: Client concierge
+              - paragraph [ref=e358]: Product guidance, gifting advice, and setup help with seven-day coverage.
+              - paragraph [ref=e359]: care@velora.house
+            - generic [ref=e360]:
+              - paragraph [ref=e361]: Client care
+              - paragraph [ref=e362]: Priority line
+              - paragraph [ref=e363]: For urgent order updates, delivery changes, or replacement requests.
+              - paragraph [ref=e364]: +852 3568 2180
+            - generic [ref=e365]:
+              - paragraph [ref=e366]: Client care
+              - paragraph [ref=e367]: Central studio
+              - paragraph [ref=e368]: Private pickup and product consultations by appointment.
+              - paragraph [ref=e369]: 20/F, Alexandra House, Central
+        - generic [ref=e370]:
+          - generic [ref=e371]:
+            - paragraph [ref=e372]: Recommended
+            - heading "Pieces that layer naturally into one considered setup." [level=2] [ref=e373]
+            - paragraph [ref=e374]: Selected for commuting, hybrid work, gifting, and compact urban homes.
+          - generic [ref=e375]:
+            - article [ref=e376]:
+              - generic [ref=e377]:
+                - link "Keyboard top Quiet tactility with premium detailing." [ref=e378] [cursor=pointer]:
+                  - /url: /en/products/loom-wireless-keyboard
+                  - generic [ref=e426]:
+                    - paragraph [ref=e427]: Keyboard top
+                    - paragraph [ref=e428]: Quiet tactility with premium detailing.
+                - button "Save" [ref=e429]:
+                  - img [ref=e430]
+              - generic [ref=e432]:
+                - generic [ref=e433]:
+                  - paragraph [ref=e434]: Workspace
+                  - generic [ref=e435]: "-14%"
+                - generic [ref=e436]:
+                  - link "Loom Wireless Keyboard" [ref=e437] [cursor=pointer]:
+                    - /url: /en/products/loom-wireless-keyboard
+                  - paragraph [ref=e438]: A tactile, low-noise keyboard engineered for focused work and multi-device setups.
+                - generic [ref=e439]:
+                  - generic [ref=e440]:
+                    - img [ref=e441]
+                    - img [ref=e443]
+                    - img [ref=e445]
+                    - img [ref=e447]
+                    - img [ref=e449]
+                  - generic [ref=e451]: "4.9"
+                  - generic [ref=e452]: "117"
+                - generic [ref=e453]:
+                  - generic [ref=e454]:
+                    - paragraph [ref=e455]: HK$1,280
+                    - paragraph [ref=e456]: HK$1,480
+                  - button "Add" [ref=e457]:
+                    - img [ref=e458]
+                    - text: Add
+            - article [ref=e461]:
+              - generic [ref=e462]:
+                - link "Lamp front Architectural light with low visual noise." [ref=e463] [cursor=pointer]:
+                  - /url: /en/products/lumen-desk-light
+                  - generic [ref=e472]:
+                    - paragraph [ref=e473]: Lamp front
+                    - paragraph [ref=e474]: Architectural light with low visual noise.
+                - button "Save" [ref=e475]:
+                  - img [ref=e476]
+              - generic [ref=e478]:
+                - generic [ref=e479]:
+                  - paragraph [ref=e480]: Workspace
+                  - generic [ref=e481]: "-14%"
+                - generic [ref=e482]:
+                  - link "Lumen Desk Light" [ref=e483] [cursor=pointer]:
+                    - /url: /en/products/lumen-desk-light
+                  - paragraph [ref=e484]: A glare-free task light with ambient side glow and scene presets for focused hours.
+                - generic [ref=e485]:
+                  - generic [ref=e486]:
+                    - img [ref=e487]
+                    - img [ref=e489]
+                    - img [ref=e491]
+                    - img [ref=e493]
+                    - img [ref=e495]
+                  - generic [ref=e497]: "4.8"
+                  - generic [ref=e498]: "89"
+                - generic [ref=e499]:
+                  - generic [ref=e500]:
+                    - paragraph [ref=e501]: HK$1,180
+                    - paragraph [ref=e502]: HK$1,380
+                  - button "Add" [ref=e503]:
+                    - img [ref=e504]
+                    - text: Add
+            - article [ref=e507]:
+              - generic [ref=e508]:
+                - link "Front profile Compact shape, highly considered access." [ref=e509] [cursor=pointer]:
+                  - /url: /en/products/forma-sling
+                  - generic [ref=e516]:
+                    - paragraph [ref=e517]: Front profile
+                    - paragraph [ref=e518]: Compact shape, highly considered access.
+                - button "Remove saved item" [ref=e519]:
+                  - img [ref=e520]
+              - generic [ref=e522]:
+                - generic [ref=e523]:
+                  - paragraph [ref=e524]: Personal carry
+                  - generic [ref=e525]: "-17%"
+                - generic [ref=e526]:
+                  - link "Forma Sling" [ref=e527] [cursor=pointer]:
+                    - /url: /en/products/forma-sling
+                  - paragraph [ref=e528]: A compact sling with modular pocketing, hidden passport storage, and a clean architectural line.
+                - generic [ref=e529]:
+                  - generic [ref=e530]:
+                    - img [ref=e531]
+                    - img [ref=e533]
+                    - img [ref=e535]
+                    - img [ref=e537]
+                    - img [ref=e539]
+                  - generic [ref=e541]: "4.8"
+                  - generic [ref=e542]: "108"
+                - generic [ref=e543]:
+                  - generic [ref=e544]:
+                    - paragraph [ref=e545]: HK$980
+                    - paragraph [ref=e546]: HK$1,180
+                  - button "Add" [ref=e547]:
+                    - img [ref=e548]
+                    - text: Add
+            - article [ref=e551]:
+              - generic [ref=e552]:
+                - link "Charger hero High-output power in a refined format." [ref=e553] [cursor=pointer]:
+                  - /url: /en/products/orbit-gan-charger
+                  - generic [ref=e562]:
+                    - paragraph [ref=e563]: Charger hero
+                    - paragraph [ref=e564]: High-output power in a refined format.
+                - button "Save" [ref=e565]:
+                  - img [ref=e566]
+              - generic [ref=e568]:
+                - generic [ref=e569]:
+                  - paragraph [ref=e570]: Travel power
+                  - generic [ref=e571]: "-11%"
+                - generic [ref=e572]:
+                  - link "Orbit GaN Charger" [ref=e573] [cursor=pointer]:
+                    - /url: /en/products/orbit-gan-charger
+                  - paragraph [ref=e574]: A compact 140 W charger with three ports, a fold-flat profile, and premium thermal management.
+                - generic [ref=e575]:
+                  - generic [ref=e576]:
+                    - img [ref=e577]
+                    - img [ref=e579]
+                    - img [ref=e581]
+                    - img [ref=e583]
+                    - img [ref=e585]
+                  - generic [ref=e587]: "4.8"
+                  - generic [ref=e588]: "139"
+                - generic [ref=e589]:
+                  - generic [ref=e590]:
+                    - paragraph [ref=e591]: HK$880
+                    - paragraph [ref=e592]: HK$990
+                  - button "Add" [ref=e593]:
+                    - img [ref=e594]
+                    - text: Add
+    - contentinfo [ref=e597]:
+      - generic [ref=e598]:
+        - generic [ref=e599]:
+          - paragraph [ref=e600]: Velora
+          - paragraph [ref=e601]: Precision-crafted audio, carry, and smart-living essentials from Hong Kong.
+        - generic [ref=e602]:
+          - paragraph [ref=e603]: Shop
+          - generic [ref=e604]:
+            - link "All products" [ref=e605] [cursor=pointer]:
+              - /url: /en/shop
+            - link "Offers" [ref=e606] [cursor=pointer]:
+              - /url: /en/offers
+            - link "Wishlist" [ref=e607] [cursor=pointer]:
+              - /url: /en/wishlist
+        - generic [ref=e608]:
+          - paragraph [ref=e609]: Service
+          - generic [ref=e610]:
+            - link "Order tracking" [ref=e611] [cursor=pointer]:
+              - /url: /en/account/tracking
+            - link "Help centre" [ref=e612] [cursor=pointer]:
+              - /url: /en/help
+            - link "Contact" [ref=e613] [cursor=pointer]:
+              - /url: /en/contact
+        - generic [ref=e614]:
+          - paragraph [ref=e615]: Company
+          - generic [ref=e616]:
+            - link "About Velora" [ref=e617] [cursor=pointer]:
+              - /url: /en/about
+            - link "Account" [ref=e618] [cursor=pointer]:
+              - /url: /en/account
+            - link "Operations" [ref=e619] [cursor=pointer]:
+              - /url: /en/admin
+  - region "Notifications alt+T"
+  - alert [ref=e620]

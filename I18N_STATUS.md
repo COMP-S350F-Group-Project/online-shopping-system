@@ -15,6 +15,9 @@ Last updated: 2026-04-01
 - Locale-aware currency and date formatting.
 - Language switcher in the UI.
 - Translation dictionaries for core shared UI, commerce actions, checkout text, support text, and major page-level copy.
+- Additional localized accessibility labels for quantity controls and mobile checkout summary states.
+- Shared bilingual discovery copy for header search, search landing, account quick paths, help shortcuts, and admin operational labels.
+- Shared bilingual predictive-search copy for suggestion headings, product/category/edit groupings, empty instant-search feedback, and related-query modules.
 
 ## Coverage Snapshot
 
@@ -30,9 +33,10 @@ Last updated: 2026-04-01
 
 ## Known Gaps
 
-- Some longer page-level copy is still localized with inline `locale === "zh-Hant"` branching inside page files instead of centralized dictionary entries.
+- Some longer page-level copy is still localized with inline `locale === "zh-Hant"` branching inside page files instead of centralized dictionary entries, but search/account/help/admin have been reduced significantly.
 - Operational labels such as payment method names are partly shared strings and could be normalized for stronger localization control.
-- Search currently relies mostly on bilingual seeded product content rather than locale-specific synonyms or intent mapping.
+- Search now has shared intent mapping and related-query generation, but it still needs richer locale-specific synonyms, typo tolerance, and deeper vocabulary coverage.
+- Remaining inline page-level bilingual copy is now concentrated more in offers, some operational views, and scattered supporting sections rather than the main search/account/help/admin surfaces.
 
 ## Quality Notes
 
@@ -42,7 +46,7 @@ Last updated: 2026-04-01
 
 ## Next I18N Work
 
-1. Extract more page-level strings from account, help, offers, and admin surfaces into dictionaries.
-2. Standardize bilingual terminology for shipping, support, promotions, and after-sales language.
-3. Add richer locale-aware search vocabulary and merchandising tags.
+1. Extract the remaining page-level strings from offers, admin edge cases, and supporting surfaces into dictionaries.
+2. Standardize bilingual terminology for shipping, support, promotions, payment, and after-sales language.
+3. Add richer locale-aware search vocabulary, synonyms, typo handling, and merchandising tags.
 4. Keep validating both locales in every major iteration cycle.

@@ -128,6 +128,9 @@ export function CartExperience() {
                   </div>
                   <div className="inline-flex items-center gap-4 rounded-full border border-[var(--line)] bg-white/80 px-4 py-2">
                     <button
+                      aria-label={t("cartPage.decreaseQuantity", {
+                        product: product.name[locale],
+                      })}
                       className="rounded-full p-1 text-slate-500 hover:bg-black/5"
                       onClick={() =>
                         updateQuantity(item, Math.max(1, item.quantity - 1))
@@ -138,6 +141,9 @@ export function CartExperience() {
                     </button>
                     <span className="min-w-5 text-center font-medium">{item.quantity}</span>
                     <button
+                      aria-label={t("cartPage.increaseQuantity", {
+                        product: product.name[locale],
+                      })}
                       className="rounded-full p-1 text-slate-500 hover:bg-black/5"
                       onClick={() => updateQuantity(item, item.quantity + 1)}
                       type="button"
@@ -213,12 +219,14 @@ export function CartExperience() {
               <p className="text-sm font-semibold text-[var(--ink)]">
                 {t("cartPage.shippingMethod")}
               </p>
-              <div className="grid gap-2">
+              <div aria-label={t("cartPage.shippingMethod")} className="grid gap-2" role="radiogroup">
                 {(["complimentary", "express", "studio"] as const).map((method) => {
                   const option = getShippingOptionContent(method, locale);
 
                   return (
                   <button
+                    aria-checked={method === shippingMethod}
+                    aria-describedby={`cart-shipping-${method}`}
                     key={method}
                     className={`rounded-[20px] border px-4 py-3 text-left text-sm transition ${
                       method === shippingMethod
@@ -226,6 +234,7 @@ export function CartExperience() {
                         : "border-[var(--line)] bg-white/70 hover:bg-white"
                     }`}
                     onClick={() => setShippingMethod(method)}
+                    role="radio"
                     type="button"
                   >
                     <div className="flex items-center justify-between gap-3">
@@ -238,7 +247,9 @@ export function CartExperience() {
                           : t("common.free")}
                       </span>
                     </div>
-                    <p className="mt-2 text-xs leading-6 text-slate-500">{option.promise}</p>
+                    <p className="mt-2 text-xs leading-6 text-slate-500" id={`cart-shipping-${method}`}>
+                      {option.promise}
+                    </p>
                   </button>
                   );
                 })}

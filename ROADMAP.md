@@ -22,33 +22,40 @@ Velora is a premium direct-to-consumer lifestyle technology brand built around q
 - Premium bilingual storefront is live across home, catalog, PDP, cart, checkout, account, support, story, and admin surfaces.
 - Locale switching, browser detection, and persisted language preference are implemented.
 - Seeded commerce and order data support realistic flows without exposing non-production wording in UI.
-- Recent upgrades improved search discovery, product media, editorial pages, admin realism, and the member after-sales center.
+- Recent upgrades improved search discovery, product media, editorial pages, admin realism, the member after-sales center, and the checkout-to-confirmation journey.
+- Mobile responsiveness and transactional accessibility are now materially stronger across checkout, account, help, and admin.
+- Header and search now share a reusable discovery layer that surfaces popular intents, category shortcuts, curated edits, and service routes.
+- Predictive search now runs through a shared search domain and API-backed suggestion payloads instead of static discovery alone.
+- Mobile navigation now behaves more like a discovery canvas with quick account paths, category access, seasonal edits, and service shortcuts.
+- The bag drawer now acts as a true transactional wayfinding surface with live order totals, in-drawer quantity control, cross-sell recommendations, and a stronger empty-bag state.
+- High-value page copy for search, account, help, and admin is increasingly centralized in the translation dictionaries instead of inline locale branches.
 
 ## Active Priorities
 
-1. Raise member center and after-sales quality to match home and PDP polish.
-2. Reduce remaining inline locale branches by extracting more copy into shared translation dictionaries.
-3. Strengthen checkout realism with better payment architecture and post-purchase states.
-4. Improve mobile ergonomics for dense account, support, and admin pages.
-5. Continue accessibility and SEO hardening.
+1. Continue refining search with stronger synonym coverage, multilingual vocabulary mapping, and more context-aware merchandising beyond the current predictive suggestions.
+2. Reduce the remaining inline locale branches, especially in operational and promotional surfaces.
+3. Continue accessibility and SEO hardening across transactional flows and navigation overlays.
+4. Keep refining cart drawer behavior and mobile navigation based on real-device interaction findings.
+5. Introduce API-ready service boundaries for auth, checkout, and order management.
 
 ## Next Iterations
 
 ### Now
 
-- Finalize the upgraded account, order history, order detail, and tracking journeys.
+- Deepen the new predictive search with broader synonyms, query grouping, and better distinction between product, category, and editorial intent.
+- Continue extracting page-level copy into shared dictionaries to reduce inline locale branching.
 - Document product audit findings, design intent, and i18n coverage after each cycle.
 - Keep lint and production build green after every iteration.
 
 ### Next
 
-- Upgrade checkout with more refined payment step structure, trust messaging, and failure recovery.
 - Add richer saved-item flows, cross-sell logic, and reorder affordances across account surfaces.
-- Improve search with instant suggestions, synonyms, and merchandising blocks.
+- Deepen cart drawer behavior with better gesture handling, quantity-control interaction polish, and stronger saved-item continuity.
+- Expand confirmation and order history with stronger lifecycle continuity between purchase and aftercare.
+- Add query-aware merchandising blocks, richer no-result recovery, and locale-specific search intent tuning.
 
 ### Later
 
-- Introduce API-ready service boundaries for auth, checkout, and order management.
 - Add operational realism for admin actions, inventory changes, and promotion workflows.
 - Expand SEO depth with richer structured metadata and collection storytelling.
 

@@ -60,6 +60,19 @@ export const enMessages = {
     cart: "Bag",
     admin: "Operations",
   },
+  header: {
+    searchTrayTitle: "Search by product, collection, or daily rhythm",
+    searchTrayCopy:
+      "Start with what you need now, then move into categories, curated edits, or client services without breaking the flow.",
+    loadingSuggestions: "Searching the catalogue",
+    querySuggestions: "Suggested searches",
+    productSuggestions: "Matching products",
+    categorySuggestions: "Matching categories",
+    collectionSuggestions: "Matching edits",
+    noInstantMatches:
+      "No immediate matches yet. You can still open the full results page and browse the closest fits.",
+    viewAllResults: "View all results for “{query}”",
+  },
   home: {
     eyebrow: "Designed for calm, connected living",
     title: "Refined technology and carry for a calmer everyday rhythm.",
@@ -95,19 +108,33 @@ export const enMessages = {
     title: "Search results",
     description: "Search the catalogue by product name, collection, or material story.",
     resultCount: "{count} results for “{query}”",
+    eyebrow: "Search",
+    resultsFor: "Results for “{query}”",
     discoveryTitle: "Start with a product, collection, or daily ritual.",
     discoveryCopy:
       "Search Velora by product name, use case, material story, or the way you move through the day.",
+    filteredTitle: "Filtered results",
+    refinedCopy:
+      "Refine by category, edit, and sort order to narrow the catalogue with precision.",
     popularSearches: "Popular searches",
     browseCategories: "Browse categories",
     curatedEdits: "Curated edits",
+    serviceShortcuts: "Client services",
     bestMatch: "Best match",
     averageRating: "Average rating",
     matchingCategories: "Matching categories",
     matchingCollections: "Matching edits",
+    relatedSearches: "Related searches",
+    startEyebrow: "Start here",
+    startTitle: "Most loved right now",
+    startDescription:
+      "Start with the products earning the strongest response across the collection.",
+    allCategories: "All categories",
     emptyTitle: "No results found",
     emptyCopy:
       "Try a broader phrase or browse a category to continue exploring.",
+    emptyPrimaryLabel: "Browse the collection",
+    emptySecondaryLabel: "Return home",
   },
   product: {
     overview: "Overview",
@@ -139,7 +166,18 @@ export const enMessages = {
     emptyTitle: "Your bag is currently empty",
     emptyCopy:
       "Discover a considered edit of audio, carry, and home technology.",
+    emptyDrawerEyebrow: "Ready when you are",
     savedTitle: "Saved for later",
+    drawerEyebrow: "Ready for checkout",
+    drawerItemCount: "{count} items",
+    savedForLaterToast: "Saved for later",
+    removedToast: "Removed from bag",
+    recommendedTitle: "Often added next",
+    recommendedCopy:
+      "A few pieces that naturally complete the setup already in your bag.",
+    editBag: "Review full bag",
+    decreaseQuantity: "Decrease quantity for {product}",
+    increaseQuantity: "Increase quantity for {product}",
   },
   checkout: {
     title: "Secure checkout",
@@ -203,6 +241,7 @@ export const enMessages = {
       "By placing the order, you confirm the delivery details and authorize payment for the total shown.",
     processingNotice:
       "Reviewing payment and securing your order. Please keep this window open for a moment.",
+    mobileTotalLabel: "Order total",
   },
   confirmation: {
     title: "Order confirmed",
@@ -251,10 +290,27 @@ export const enMessages = {
     title: "Your account",
     description:
       "Orders, saved products, addresses, and service updates in one place.",
+    welcome:
+      "Welcome back, {name}. Manage orders, delivery rhythm, payment preferences, and concierge support from one place.",
     orders: "Orders",
     tracking: "Tracking",
     addresses: "Addresses",
     preferences: "Preferences",
+    lifetimeSpend: "Lifetime spend",
+    openOrders: "Open orders",
+    savedProducts: "Saved products",
+    latestOrder: "Latest order activity",
+    viewAll: "View all",
+    trackOrder: "Track order",
+    fulfillmentProgress: "Fulfillment progress",
+    quickAccessTitle: "Quick access",
+    memberProfile: "Membership and service profile",
+    membershipSince: "Membership and since",
+    memberSince: "Member since {date}",
+    deliveryDefaults: "Delivery and payment defaults",
+    conciergeNote: "Concierge note",
+    privilegesTitle: "Member privileges",
+    recommendedTitle: "Recommended for you",
     recentOrders: "Recent orders",
     membership: "Velora Circle",
     buyAgain: "Buy again",
@@ -276,6 +332,24 @@ export const enMessages = {
     title: "Support centre",
     description:
       "Answers, guidance, and direct service for orders, care, and product setup.",
+    eyebrow: "Support centre",
+    heroTitle:
+      "Orders, care, and setup support should feel as polished as the purchase itself.",
+    heroCopy:
+      "Move quickly from tracking and care guidance to direct client service, without searching through noise.",
+    trackOrderCta: "Track an order",
+    contactCareCta: "Contact client care",
+    quickPathEyebrow: "Quick path",
+    quickPathCta: "Open now",
+    channelsTitle: "Direct service channels",
+    standardsTitle: "Service standards",
+    faqEyebrow: "Most requested answers",
+    faqTitle: "The questions clients ask most, organized for quick answers.",
+    faqDescription:
+      "Covering shipping, returns, and everyday care, so you can see the clearest answer before reaching out.",
+    shippingLabel: "Shipping",
+    returnsLabel: "Returns",
+    careLabel: "Care",
   },
   aboutPage: {
     title: "The Velora story",
@@ -302,6 +376,8 @@ export const enMessages = {
     title: "Operations dashboard",
     description:
       "A high-level view across commerce performance, inventory, service, and fulfillment.",
+    heroTitle:
+      "Keep commerce performance, service response, and product health in one view.",
     priorityQueue: "Priority queue",
     recentOrders: "Recent orders",
     inventoryWatch: "Inventory watch",
@@ -312,6 +388,15 @@ export const enMessages = {
     revenueInfluenced: "Revenue influenced",
     lastOrder: "Last order",
     totalSpend: "Total spend",
+    viewAll: "View all",
+    orderTotal: "Order total",
+    preOrderQueue: "Pre-order queue",
+    unitsLeft: "{count} units left",
+    reviewsLabel: "{count} reviews",
+    organicConversion: "Strong organic conversion",
+    stock: "Stock",
+    preOrder: "Pre-order",
+    stockUnits: "{count} units",
     viewOrder: "Open order",
     viewProduct: "View product",
   },
