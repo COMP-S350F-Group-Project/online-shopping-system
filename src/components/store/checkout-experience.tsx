@@ -4,6 +4,7 @@ import { startTransition, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import { useTranslations } from "@/components/providers/locale-provider";
+import { EmptyState } from "@/components/shared/empty-state";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -59,9 +60,28 @@ export function CheckoutExperience({ locale }: { locale: Locale }) {
     };
   }, [appliedCoupon, cart, shippingMethod]);
 
+  if (cart.length === 0) {
+    return (
+      <EmptyState
+        description={
+          locale === "zh-Hant"
+            ? "你的購物袋目前沒有商品，請先加入想購買的內容後再進行結帳。"
+            : "Your bag is currently empty. Add products before continuing to checkout."
+        }
+        locale={locale}
+        primaryHref="/shop"
+        primaryLabel={locale === "zh-Hant" ? "前往選購" : "Browse the collection"}
+        secondaryHref="/cart"
+        secondaryLabel={locale === "zh-Hant" ? "返回購物袋" : "Return to bag"}
+        title={locale === "zh-Hant" ? "尚未有可結帳商品" : "Nothing ready for checkout"}
+      />
+    );
+  }
+
   return (
     <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
       <form
+        id="checkout-form"
         className="space-y-6"
         onSubmit={(event) => {
           event.preventDefault();
@@ -80,10 +100,23 @@ export function CheckoutExperience({ locale }: { locale: Locale }) {
             <h2 className="font-display text-3xl">{t("checkout.contact")}</h2>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
-            <Input placeholder={t("auth.firstName")} required />
-            <Input placeholder={t("auth.lastName")} required />
-            <Input className="md:col-span-2" placeholder={t("auth.email")} required type="email" />
-            <Input className="md:col-span-2" defaultValue="+852 6123 4568" placeholder="Phone" required type="tel" />
+            <Input autoComplete="given-name" placeholder={t("auth.firstName")} required />
+            <Input autoComplete="family-name" placeholder={t("auth.lastName")} required />
+            <Input
+              autoComplete="email"
+              className="md:col-span-2"
+              placeholder={t("auth.email")}
+              required
+              type="email"
+            />
+            <Input
+              autoComplete="tel"
+              className="md:col-span-2"
+              defaultValue="+852 6123 4568"
+              placeholder={t("common.phone")}
+              required
+              type="tel"
+            />
           </div>
         </section>
 
@@ -92,11 +125,32 @@ export function CheckoutExperience({ locale }: { locale: Locale }) {
             <h2 className="font-display text-3xl">{t("checkout.shippingAddress")}</h2>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
-            <Input className="md:col-span-2" defaultValue="Tower 3, 39 Conduit Road" required />
-            <Input defaultValue="Mid-Levels West" required />
-            <Input defaultValue="Hong Kong" required />
-            <Input defaultValue="Hong Kong Island" required />
-            <Input defaultValue="000000" required />
+            <Input
+              autoComplete="address-line1"
+              className="md:col-span-2"
+              defaultValue={
+                locale === "zh-Hant"
+                  ? "干德道 39 號 3 座"
+                  : "Tower 3, 39 Conduit Road"
+              }
+              required
+            />
+            <Input
+              autoComplete="address-level3"
+              defaultValue={locale === "zh-Hant" ? "半山西" : "Mid-Levels West"}
+              required
+            />
+            <Input
+              autoComplete="address-level2"
+              defaultValue={locale === "zh-Hant" ? "香港" : "Hong Kong"}
+              required
+            />
+            <Input
+              autoComplete="address-level1"
+              defaultValue={locale === "zh-Hant" ? "香港島" : "Hong Kong Island"}
+              required
+            />
+            <Input autoComplete="postal-code" defaultValue="000000" required />
             <Textarea className="md:col-span-2" placeholder={t("checkout.orderNotes")} />
           </div>
         </section>
@@ -106,10 +160,35 @@ export function CheckoutExperience({ locale }: { locale: Locale }) {
             <h2 className="font-display text-3xl">{t("checkout.payment")}</h2>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
-            <Input className="md:col-span-2" placeholder={t("checkout.cardName")} required />
-            <Input className="md:col-span-2" defaultValue="4242 4242 4242 4242" placeholder={t("checkout.cardNumber")} required />
-            <Input defaultValue="08 / 29" placeholder={t("checkout.expiry")} required />
-            <Input defaultValue="482" placeholder={t("checkout.cvc")} required />
+            <Input
+              autoComplete="cc-name"
+              className="md:col-span-2"
+              defaultValue={locale === "zh-Hant" ? "Evelyn Lau" : "Evelyn Lau"}
+              placeholder={t("checkout.cardName")}
+              required
+            />
+            <Input
+              autoComplete="cc-number"
+              className="md:col-span-2"
+              defaultValue="4835 2210 6842 1906"
+              inputMode="numeric"
+              placeholder={t("checkout.cardNumber")}
+              required
+            />
+            <Input
+              autoComplete="cc-exp"
+              defaultValue="08 / 29"
+              inputMode="numeric"
+              placeholder={t("checkout.expiry")}
+              required
+            />
+            <Input
+              autoComplete="cc-csc"
+              defaultValue="482"
+              inputMode="numeric"
+              placeholder={t("checkout.cvc")}
+              required
+            />
           </div>
         </section>
       </form>
@@ -168,16 +247,7 @@ export function CheckoutExperience({ locale }: { locale: Locale }) {
               <span>{formatCurrency(summary.total, locale)}</span>
             </div>
 
-            <Button
-              className="w-full"
-              disabled={isSubmitting}
-              onClick={() => {
-                const submitButton = document.querySelector<HTMLButtonElement>(
-                  "button[type='submit']",
-                );
-                submitButton?.click();
-              }}
-            >
+            <Button className="w-full" disabled={isSubmitting} form="checkout-form" type="submit">
               {t("checkout.placeOrder")}
             </Button>
           </div>

@@ -4,12 +4,12 @@ import { ShoppingBag } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
-import { useLocaleContext } from "@/components/providers/locale-provider";
+import { useTranslations } from "@/components/providers/locale-provider";
 import { useCommerceStore } from "@/lib/store";
 import type { Product } from "@/types";
 
 export function QuickAddButton({ product }: { product: Product }) {
-  const { locale } = useLocaleContext();
+  const t = useTranslations();
   const addToCart = useCommerceStore((state) => state.addToCart);
 
   return (
@@ -22,11 +22,11 @@ export function QuickAddButton({ product }: { product: Product }) {
           quantity: 1,
           selections: product.defaultVariantSelection,
         });
-        toast.success(locale === "zh-Hant" ? "已加入購物袋" : "Added to bag");
+        toast.success(t("common.addedToCart"));
       }}
     >
       <ShoppingBag className="h-4 w-4" />
-      {locale === "zh-Hant" ? "加入" : "Add"}
+      {t("common.add")}
     </Button>
   );
 }

@@ -33,6 +33,12 @@ export function CatalogToolbar({
   );
   const activeSort =
     deserialiseSearchValue(searchParams.get("sort") ?? undefined) || "featured";
+  const pathSegments = pathname.split("/").filter(Boolean);
+  const categoryIndex = pathSegments.indexOf("categories");
+  const isCategoryPage = categoryIndex !== -1;
+  const activeCategorySlug = isCategoryPage
+    ? pathSegments[categoryIndex + 1]
+    : activeCategory;
 
   const updateParam = (key: string, value?: string) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -47,6 +53,21 @@ export function CatalogToolbar({
     });
   };
 
+  const updateCategory = (value?: string) => {
+    if (!isCategoryPage) {
+      updateParam("category", value);
+      return;
+    }
+
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete("category");
+    const nextPath = value ? `/${locale}/categories/${value}` : `/${locale}/shop`;
+
+    startTransition(() => {
+      router.replace(params.toString() ? `${nextPath}?${params.toString()}` : nextPath);
+    });
+  };
+
   return (
     <div className="space-y-4 rounded-[32px] border border-[var(--line)] bg-white/75 p-5 backdrop-blur">
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
@@ -54,11 +75,11 @@ export function CatalogToolbar({
           <button
             className={cn(
               "rounded-full border px-4 py-2 text-sm font-medium transition",
-              activeCategory
+              activeCategorySlug
                 ? "border-[var(--line)] bg-white/70 text-slate-700"
                 : "border-[var(--accent)] bg-[var(--accent-soft)] text-[var(--ink)]",
             )}
-            onClick={() => updateParam("category")}
+            onClick={() => updateCategory()}
             type="button"
           >
             {locale === "zh-Hant" ? "全部分類" : "All categories"}
@@ -68,11 +89,11 @@ export function CatalogToolbar({
               key={category.slug}
               className={cn(
                 "rounded-full border px-4 py-2 text-sm font-medium transition",
-                activeCategory === category.slug
+                activeCategorySlug === category.slug
                   ? "border-[var(--accent)] bg-[var(--accent-soft)] text-[var(--ink)]"
                   : "border-[var(--line)] bg-white/70 text-slate-700 hover:bg-white",
               )}
-              onClick={() => updateParam("category", category.slug)}
+              onClick={() => updateCategory(category.slug)}
               type="button"
             >
               {category.name[locale]}

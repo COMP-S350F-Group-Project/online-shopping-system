@@ -1,6 +1,4 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { LocaleLink } from "@/components/shared/locale-link";
+import { AuthForm } from "@/components/forms/auth-form";
 import { resolveLocale } from "@/lib/request";
 
 export default async function SignUpPage({
@@ -28,39 +26,7 @@ export default async function SignUpPage({
         </section>
 
         <section className="surface-panel rounded-[40px] px-6 py-10 md:px-10">
-          <form className="grid gap-5">
-            <div className="grid gap-5 md:grid-cols-2">
-              <div className="space-y-2">
-                <label className="text-sm font-semibold text-[var(--ink)]">
-                  {locale === "zh-Hant" ? "名字" : "First name"}
-                </label>
-                <Input defaultValue="Evelyn" />
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-semibold text-[var(--ink)]">
-                  {locale === "zh-Hant" ? "姓氏" : "Last name"}
-                </label>
-                <Input defaultValue="Lau" />
-              </div>
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-semibold text-[var(--ink)]">
-                {locale === "zh-Hant" ? "電郵地址" : "Email address"}
-              </label>
-              <Input defaultValue="evelyn@private-mail.com" type="email" />
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-semibold text-[var(--ink)]">
-                {locale === "zh-Hant" ? "建立密碼" : "Create password"}
-              </label>
-              <Input defaultValue="Velora2026" type="password" />
-            </div>
-            <Button asChild className="mt-3 w-full">
-              <LocaleLink href="/account" locale={locale}>
-                {locale === "zh-Hant" ? "建立帳戶" : "Create account"}
-              </LocaleLink>
-            </Button>
-          </form>
+          <AuthForm locale={locale} mode="sign-up" />
         </section>
       </div>
     </div>

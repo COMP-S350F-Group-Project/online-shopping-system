@@ -253,6 +253,90 @@ export const adminQueue: AdminQueueItem[] = [
   },
 ];
 
+export const adminClients = [
+  {
+    id: "client-1",
+    name: "Iris Chan",
+    city: localizedText("Hong Kong", "香港"),
+    tier: localizedText("Circle Black", "Circle Black"),
+    totalSpend: 18460,
+    lastOrder: "2026-03-29T14:20:00+08:00",
+    focus: localizedText(
+      "Travel gifting, compact audio, and private pickup.",
+      "偏好旅行送禮、輕量音訊與到店取貨。",
+    ),
+  },
+  {
+    id: "client-2",
+    name: "Marcus Lee",
+    city: localizedText("Singapore", "新加坡"),
+    tier: localizedText("Circle Atelier", "Circle Atelier"),
+    totalSpend: 13240,
+    lastOrder: "2026-03-27T18:05:00+08:00",
+    focus: localizedText(
+      "Workspace upgrades and premium charging kits.",
+      "偏好桌面升級與高階充電配件。",
+    ),
+  },
+  {
+    id: "client-3",
+    name: "Tiffany Wong",
+    city: localizedText("Taipei", "台北"),
+    tier: localizedText("Circle Black", "Circle Black"),
+    totalSpend: 9600,
+    lastOrder: "2026-03-23T09:50:00+08:00",
+    focus: localizedText(
+      "Home fragrance, ambient lighting, and gifting wraps.",
+      "偏好香氛、氛圍照明與送禮包裝服務。",
+    ),
+  },
+  {
+    id: "client-4",
+    name: "Daniel Ho",
+    city: localizedText("Shanghai", "上海"),
+    tier: localizedText("Circle", "Circle"),
+    totalSpend: 7420,
+    lastOrder: "2026-03-18T12:40:00+08:00",
+    focus: localizedText(
+      "Portable audio and short-haul travel essentials.",
+      "偏好便攜音訊與短途差旅裝備。",
+    ),
+  },
+] as const;
+
+export const adminPromotionPerformance = [
+  {
+    code: "FIRSTLIGHT",
+    title: localizedText("First order welcome", "首購禮遇"),
+    redemptions: 184,
+    revenue: 182400,
+    note: localizedText(
+      "Strongest uptake on audio bundles and gift-led carts.",
+      "在音訊套裝與送禮型購物袋中的轉換表現最佳。",
+    ),
+  },
+  {
+    code: "STUDIOSET",
+    title: localizedText("Workspace set incentive", "桌面套裝優惠"),
+    redemptions: 112,
+    revenue: 126800,
+    note: localizedText(
+      "Most frequently paired with desk lighting and charging accessories.",
+      "最常與桌燈及充電配件一同帶動加購。",
+    ),
+  },
+  {
+    code: "CARRYON",
+    title: localizedText("Travel carry privilege", "旅用收納禮遇"),
+    redemptions: 76,
+    revenue: 94800,
+    note: localizedText(
+      "Higher basket size, especially on sling and charger pairings.",
+      "平均客單較高，特別帶動 sling 與充電器組合。",
+    ),
+  },
+] as const;
+
 export function buildLocaleHref(locale: Locale, href: string) {
   return href ? `/${locale}${href}` : `/${locale}`;
 }

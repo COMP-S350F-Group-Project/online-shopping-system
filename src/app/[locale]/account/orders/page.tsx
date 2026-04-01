@@ -1,7 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { LocaleLink } from "@/components/shared/locale-link";
 import { sampleOrders } from "@/lib/catalog";
-import { formatCurrency, formatDate, getOrderProgress, getOrderStatusTone } from "@/lib/format";
+import {
+  formatCurrency,
+  formatDate,
+  formatOrderStatus,
+  getOrderProgress,
+  getOrderStatusTone,
+} from "@/lib/format";
 import { resolveLocale } from "@/lib/request";
 
 export default async function OrdersPage({
@@ -40,7 +46,7 @@ export default async function OrdersPage({
                 <div className="flex items-center gap-3">
                   <p className="font-semibold text-[var(--ink)]">{order.number}</p>
                   <span className={`rounded-full px-3 py-1 text-xs font-semibold ${getOrderStatusTone(order.status)}`}>
-                    {order.status}
+                    {formatOrderStatus(order.status, locale)}
                   </span>
                 </div>
                 <p className="text-sm text-slate-500">{formatDate(order.placedAt, locale)}</p>
@@ -57,7 +63,11 @@ export default async function OrdersPage({
                 <p className="font-semibold text-[var(--ink)]">
                   {formatCurrency(order.total, locale)}
                 </p>
-                <p className="text-sm text-slate-500">{order.items.length} items</p>
+                <p className="text-sm text-slate-500">
+                  {locale === "zh-Hant"
+                    ? `${order.items.length} 件商品`
+                    : `${order.items.length} items`}
+                </p>
               </div>
             </div>
           </LocaleLink>

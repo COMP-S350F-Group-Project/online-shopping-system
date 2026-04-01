@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Velora Commerce
 
-## Getting Started
+Velora is a premium bilingual online shopping system built for executive presentation, portfolio showcase, and production-grade commerce expansion. The product combines a refined direct-to-consumer brand language with realistic catalogue data, multi-page storefront flows, and a scalable Next.js architecture.
 
-First, run the development server:
+## Product strategy
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Brand: `Velora`, a premium lifestyle technology house spanning audio, workspace, smart-living, travel power, and personal carry.
+- Target user: design-conscious professionals, frequent travellers, and modern households who value fewer, better products and high-service retail experiences.
+- Positioning: combine the clarity of premium hardware retail, the storytelling of elevated consumer brands, and the usability maturity of a strong commerce platform.
+- Locales: English (`en`) and Traditional Chinese (`zh-Hant`) with locale-aware routing, browser detection, and persisted language preference.
+
+## Experience coverage
+
+- Home / landing page
+- Shop / catalogue listing
+- Category pages
+- Search results
+- Product detail pages with gallery, variants, specs, FAQ, reviews, and recommendations
+- Wishlist
+- Cart
+- Checkout
+- Order confirmation
+- Sign-in and sign-up
+- Account dashboard
+- Order history
+- Order detail
+- Order tracking
+- Offers / promotions
+- Help centre
+- About / brand story
+- Contact
+- Localized 404
+- Operations dashboard
+
+## Stack
+
+- Next.js 16 App Router
+- TypeScript
+- Tailwind CSS 4
+- Radix-based UI primitives in a shadcn-style component structure
+- Zustand for cart / wishlist / locale preference persistence
+- Server-rendered seeded catalogue and account data
+
+## Project structure
+
+```text
+src/
+  app/
+    [locale]/             localized routes and page flows
+    robots.ts             robots metadata
+    sitemap.ts            sitemap metadata
+    layout.tsx            global shell, fonts, metadata
+    page.tsx              locale redirect entry
+  components/
+    layout/               header, footer, cart drawer, language switcher
+    providers/            locale and app providers
+    shared/               empty states, links, headings, ratings
+    store/                product, cart, checkout, wishlist experiences
+    ui/                   reusable design primitives
+  lib/
+    catalog.ts            seeded products, promotions, orders, profile data
+    format.ts             currency/date/status formatting
+    i18n.ts               locale detection and translation helpers
+    request.ts            route locale resolution helpers
+    site.ts               brand strategy, support, admin content
+    store.ts              Zustand commerce state
+    utils.ts              shared utility helpers
+  messages/
+    en.ts
+    zh-Hant.ts
+  proxy.ts                locale routing and cookie persistence
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Run locally
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open `http://localhost:3000`. Requests without a locale prefix are redirected using the saved language preference or the browser’s `Accept-Language` header.
 
-## Learn More
+## Verification
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run lint
+npm run build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Both commands pass in the current workspace.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Notes for extension
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Payment is currently presented as a polished checkout experience with architecture ready for real gateway integration.
+- Catalogue, offers, support content, and account data are seeded in TypeScript for presentation realism and straightforward future API replacement.
+- Locale dictionaries cover shared UI while product and editorial content use localized data objects for clean scaling.

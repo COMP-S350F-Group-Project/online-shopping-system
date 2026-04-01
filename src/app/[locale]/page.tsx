@@ -20,6 +20,7 @@ import {
   recommendationSlugs,
 } from "@/lib/catalog";
 import { resolveLocale } from "@/lib/request";
+import { isDefined } from "@/lib/utils";
 
 export default async function HomePage({
   params,
@@ -29,10 +30,10 @@ export default async function HomePage({
   const locale = await resolveLocale(params);
   const heroProducts = heroSlugs
     .map((slug) => getProductBySlug(slug))
-    .filter(Boolean);
+    .filter(isDefined);
   const recommendations = recommendationSlugs
     .map((slug) => getProductBySlug(slug))
-    .filter(Boolean);
+    .filter(isDefined);
 
   return (
     <div className="space-y-24 pb-24 pt-8">
@@ -45,8 +46,8 @@ export default async function HomePage({
               <div className="space-y-4">
                 <h1 className="font-display text-5xl leading-[0.92] md:text-7xl">
                   {locale === "zh-Hant"
-                    ? "把高品質生活科技，整理成一種更從容的購物方式。"
-                    : "A premium online shopping system built around calmer, better products."}
+                    ? "把精緻科技與隨行器物，帶進更從容的日常節奏。"
+                    : "Refined technology and carry for a calmer everyday rhythm."}
                 </h1>
                 <p className="max-w-xl text-lg leading-8 text-slate-600">
                   {brand.description[locale]}
@@ -54,7 +55,7 @@ export default async function HomePage({
               </div>
 
               <div className="flex flex-wrap gap-3">
-                <Button asChild size="lg">
+                <Button asChild size="lg" variant="subtle">
                   <LocaleLink href="/shop" locale={locale}>
                     {locale === "zh-Hant" ? "探索完整系列" : "Explore the full collection"}
                   </LocaleLink>
@@ -125,9 +126,9 @@ export default async function HomePage({
         <SectionHeading
           description={locale === "zh-Hant"
             ? "從聆聽、桌面、居家到隨行收納，以清晰結構整理整個系列。"
-            : "Browse the catalogue through audio, workspace, home, travel, and personal-carry lenses."}
-          eyebrow={locale === "zh-Hant" ? "資訊架構" : "Information architecture"}
-          title={locale === "zh-Hant" ? "以真實購物邏輯建立清晰導航。" : "A commerce architecture shaped around real browsing behaviour."}
+            : "Explore the collection through audio, workspace, home, travel, and personal-carry lenses."}
+          eyebrow={locale === "zh-Hant" ? "分類導覽" : "Shop by category"}
+          title={locale === "zh-Hant" ? "依照你的生活方式，探索 Velora 的完整系列。" : "Explore Velora through the way you live and move."}
         />
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-5">
           {categories.map((category) => (
@@ -152,8 +153,8 @@ export default async function HomePage({
       <section className="container-shell space-y-8">
         <SectionHeading
           description={locale === "zh-Hant"
-            ? "從最佳實務中提煉，卻維持品牌語言一致與原創性。"
-            : "Premium DTC patterns, original styling, and realistic seeded data working together as one product."}
+            ? "圍繞通勤、差旅與安靜居家時刻，整理出更貼近日常的季節選品。"
+            : "A seasonal edit shaped for commuting, travel, and quieter evenings at home."}
           eyebrow={locale === "zh-Hant" ? "焦點選品" : "Featured edit"}
           title={collections[0].name[locale]}
         />
@@ -169,9 +170,8 @@ export default async function HomePage({
           <div className="surface-panel rounded-[40px] p-8 md:p-10">
             <SectionHeading
               description={brand.strategy.pointOfView[locale]}
-              eyebrow={locale === "zh-Hant" ? "產品策略" : "Product strategy"}
-              title={locale === "zh-Hant" ? "Velora 如何定位這個品牌。"
-                : "How Velora positions the brand."}
+              eyebrow={locale === "zh-Hant" ? "品牌觀點" : "The Velora point of view"}
+              title={locale === "zh-Hant" ? "沉靜、實用且值得長久相處的設計。" : "Designed to feel calm, useful, and lasting."}
             />
             <div className="mt-8 space-y-6">
               {brandStory.map((item) => (
@@ -190,7 +190,7 @@ export default async function HomePage({
                 className="surface-panel rounded-[32px] p-6 shadow-[0_18px_70px_rgba(15,23,42,0.04)]"
               >
                 <p className="eyebrow">
-                  {locale === "zh-Hant" ? "服務節點" : "Service layer"}
+                  {locale === "zh-Hant" ? "客戶服務" : "Client care"}
                 </p>
                 <p className="mt-3 font-display text-3xl leading-tight">
                   {channel.title[locale]}
@@ -213,7 +213,7 @@ export default async function HomePage({
             ? "適合通勤、混合辦公與注重質感的現代生活。"
             : "Selected for commuting, hybrid work, gifting, and compact urban homes."}
           eyebrow={locale === "zh-Hant" ? "推薦商品" : "Recommended"}
-          title={locale === "zh-Hant" ? "更像真實商業產品的完成度。" : "The kind of polish that feels ready to launch."}
+          title={locale === "zh-Hant" ? "能自然搭配進同一種生活節奏的作品。" : "Pieces that layer naturally into one considered setup."}
         />
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {recommendations.map((product) => (

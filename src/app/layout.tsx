@@ -65,6 +65,7 @@ export default async function RootLayout({
   return (
     <html
       className={`${manrope.variable} ${cormorant.variable} ${notoSansTc.variable} ${notoSerifTc.variable} h-full antialiased`}
+      data-scroll-behavior="smooth"
       lang={locale}
     >
       <body className="min-h-full flex flex-col" data-locale={locale}>

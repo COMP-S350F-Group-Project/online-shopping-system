@@ -4,6 +4,7 @@ import type React from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
 
+import { useTranslations } from "@/components/providers/locale-provider";
 import { cn } from "@/lib/utils";
 
 export const Sheet = Dialog.Root;
@@ -31,6 +32,8 @@ export function SheetContent({
   children,
   ...props
 }: React.ComponentProps<typeof Dialog.Content>) {
+  const t = useTranslations();
+
   return (
     <SheetPortal>
       <SheetOverlay />
@@ -44,7 +47,7 @@ export function SheetContent({
         {children}
         <Dialog.Close className="absolute right-4 top-4 rounded-full p-2 text-slate-500 transition hover:bg-black/5">
           <X className="h-4 w-4" />
-          <span className="sr-only">Close</span>
+          <span className="sr-only">{t("common.close")}</span>
         </Dialog.Close>
       </Dialog.Content>
     </SheetPortal>

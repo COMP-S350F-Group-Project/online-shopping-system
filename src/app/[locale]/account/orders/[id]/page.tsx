@@ -2,8 +2,17 @@ import { notFound } from "next/navigation";
 
 import { LocaleLink } from "@/components/shared/locale-link";
 import { Button } from "@/components/ui/button";
-import { getOrderById, getProductBySlug } from "@/lib/catalog";
-import { formatCurrency, formatDate, getOrderStatusTone } from "@/lib/format";
+import {
+  getOrderById,
+  getProductBySlug,
+  getProductPriceForSelection,
+} from "@/lib/catalog";
+import {
+  formatCurrency,
+  formatDate,
+  formatOrderStatus,
+  getOrderStatusTone,
+} from "@/lib/format";
 import { resolveLocale } from "@/lib/request";
 
 export async function generateStaticParams() {
@@ -37,7 +46,7 @@ export default async function OrderDetailPage({
         </div>
         <div className="flex items-center gap-3">
           <span className={`rounded-full px-4 py-2 text-sm font-semibold ${getOrderStatusTone(order.status)}`}>
-            {order.status}
+            {formatOrderStatus(order.status, locale)}
           </span>
           <Button asChild variant="secondary">
             <LocaleLink href="/account/tracking" locale={locale}>
@@ -69,7 +78,10 @@ export default async function OrderDetailPage({
                       <p className="mt-2 text-sm text-slate-500">× {item.quantity}</p>
                     </div>
                     <p className="font-semibold text-[var(--ink)]">
-                      {formatCurrency(product.price * item.quantity, locale)}
+                      {formatCurrency(
+                        getProductPriceForSelection(product, item.selections) * item.quantity,
+                        locale,
+                      )}
                     </p>
                   </div>
                 </div>

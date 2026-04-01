@@ -4,10 +4,11 @@ import type React from "react";
 import { createContext, useContext } from "react";
 
 import { translate } from "@/lib/i18n";
-import { enMessages } from "@/messages/en";
 import type { Locale } from "@/types";
 
-type Messages = typeof enMessages;
+interface Messages {
+  [key: string]: string | Messages;
+}
 
 type LocaleContextValue = {
   locale: Locale;

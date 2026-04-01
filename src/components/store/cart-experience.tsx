@@ -227,15 +227,9 @@ export function CartExperience() {
                   onClick={() => {
                     const applied = applyCoupon(couponInput);
                     if (applied) {
-                      toast.success(
-                        locale === "zh-Hant" ? "優惠碼已套用" : "Promotion applied",
-                      );
+                      toast.success(t("cartPage.couponApplied"));
                     } else {
-                      toast.error(
-                        locale === "zh-Hant"
-                          ? "此優惠碼無法使用"
-                          : "This code is not available",
-                      );
+                      toast.error(t("cartPage.couponUnavailable"));
                     }
                   }}
                   type="button"
@@ -271,9 +265,7 @@ export function CartExperience() {
                       <span className="text-slate-500">
                         {shippingFees[method]
                           ? formatCurrency(shippingFees[method], locale)
-                          : locale === "zh-Hant"
-                            ? "免費"
-                            : "Free"}
+                          : t("common.free")}
                       </span>
                     </div>
                   </button>

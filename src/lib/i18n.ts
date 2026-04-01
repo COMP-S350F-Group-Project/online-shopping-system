@@ -2,7 +2,9 @@ import { enMessages } from "@/messages/en";
 import { zhHantMessages } from "@/messages/zh-Hant";
 import type { Locale, LocalizedText } from "@/types";
 
-type MessageTree = Record<string, string | MessageTree>;
+interface MessageTree {
+  [key: string]: string | MessageTree;
+}
 
 export const locales = ["en", "zh-Hant"] as const satisfies readonly Locale[];
 export const defaultLocale: Locale = "en";

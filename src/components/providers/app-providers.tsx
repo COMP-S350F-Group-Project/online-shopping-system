@@ -4,10 +4,11 @@ import type React from "react";
 import { Toaster } from "sonner";
 
 import { LocaleProvider } from "@/components/providers/locale-provider";
-import { enMessages } from "@/messages/en";
 import type { Locale } from "@/types";
 
-type Messages = typeof enMessages;
+interface Messages {
+  [key: string]: string | Messages;
+}
 
 export function AppProviders({
   children,

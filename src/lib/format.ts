@@ -25,32 +25,50 @@ export function formatDate(value: string, locale: Locale) {
   }).format(new Date(value));
 }
 
-export function sortProducts(
+function buildProductSearchHaystack(product: Product) {
+  return [
+    product.slug,
+    product.category,
+    product.collection,
+    product.name.en,
+    product.name["zh-Hant"],
+    product.shortDescription.en,
+    product.shortDescription["zh-Hant"],
+    product.description.en,
+    product.description["zh-Hant"],
+    product.tags.join(" "),
+  ]
+    .join(" ")
+    .toLowerCase();
+}
+
+export function filterProducts(
   products: Product[],
-  sort: string,
-  search?: string,
+  filters?: {
+    search?: string;
+    category?: string;
+    collection?: string;
+  },
 ) {
-  const query = search?.trim().toLowerCase();
-  const filtered = query
-    ? products.filter((product) => {
-        const haystack = [
-          product.slug,
-          product.category,
-          product.collection,
-          product.name.en,
-          product.name["zh-Hant"],
-          product.shortDescription.en,
-          product.shortDescription["zh-Hant"],
-          product.tags.join(" "),
-        ]
-          .join(" ")
-          .toLowerCase();
+  const query = filters?.search?.trim().toLowerCase();
 
-        return haystack.includes(query);
-      })
-    : products;
+  return products.filter((product) => {
+    const searchMatch = query
+      ? buildProductSearchHaystack(product).includes(query)
+      : true;
+    const categoryMatch = filters?.category
+      ? product.category === filters.category
+      : true;
+    const collectionMatch = filters?.collection
+      ? product.collection === filters.collection
+      : true;
 
-  const nextProducts = [...filtered];
+    return searchMatch && categoryMatch && collectionMatch;
+  });
+}
+
+export function sortProducts(products: Product[], sort: string) {
+  const nextProducts = [...products];
 
   switch (sort) {
     case "price-asc":

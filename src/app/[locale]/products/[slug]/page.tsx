@@ -17,6 +17,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { RatingStars } from "@/components/shared/rating-stars";
+import { isDefined } from "@/lib/utils";
 
 export async function generateStaticParams() {
   return products.map((product) => ({
@@ -48,12 +49,9 @@ export default async function ProductPage({
 }: {
   params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { slug } = await params;
-  const locale = await resolveLocale(
-    Promise.resolve({
-      locale: (await params).locale,
-    }),
-  );
+  const resolved = await params;
+  const { slug } = resolved;
+  const locale = await resolveLocale(Promise.resolve({ locale: resolved.locale }));
   const product = getProductBySlug(slug);
 
   if (!product) {
@@ -62,10 +60,10 @@ export default async function ProductPage({
 
   const relatedProducts = product.relatedSlugs
     .map((relatedSlug) => getProductBySlug(relatedSlug))
-    .filter(Boolean);
+    .filter(isDefined);
   const boughtTogether = product.boughtTogetherSlugs
     .map((relatedSlug) => getProductBySlug(relatedSlug))
-    .filter(Boolean);
+    .filter(isDefined);
 
   return (
     <div className="space-y-14 py-10">

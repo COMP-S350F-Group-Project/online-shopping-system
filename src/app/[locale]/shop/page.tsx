@@ -3,7 +3,7 @@ import { ProductCard } from "@/components/store/product-card";
 import { EmptyState } from "@/components/shared/empty-state";
 import { SectionHeading } from "@/components/shared/section-heading";
 import { categories, products } from "@/lib/catalog";
-import { sortProducts } from "@/lib/format";
+import { filterProducts, sortProducts } from "@/lib/format";
 import { collections } from "@/lib/site";
 import { resolveLocale, type SearchParamsPromise } from "@/lib/request";
 import { deserialiseSearchValue } from "@/lib/utils";
@@ -22,12 +22,9 @@ export default async function ShopPage({
   const sort = deserialiseSearchValue(query.sort) || "featured";
 
   const filtered = sortProducts(
-    products.filter((product) => {
-      const categoryMatch = activeCategory ? product.category === activeCategory : true;
-      const collectionMatch = activeCollection
-        ? product.collection === activeCollection
-        : true;
-      return categoryMatch && collectionMatch;
+    filterProducts(products, {
+      category: activeCategory,
+      collection: activeCollection,
     }),
     sort,
   );

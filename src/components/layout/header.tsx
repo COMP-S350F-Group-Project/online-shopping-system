@@ -41,6 +41,7 @@ export function Header() {
         <div className="hidden flex-1 justify-center xl:flex">
           <form action={`/${locale}/search`} className="w-full max-w-xl">
             <input
+              aria-label={t("common.search")}
               className="h-12 w-full rounded-full border border-[var(--line)] bg-white/70 px-5 text-sm text-[var(--ink)] outline-none transition placeholder:text-slate-400 focus:border-[var(--accent)] focus:ring-2 focus:ring-[var(--accent)]/15"
               name="q"
               placeholder={t("common.searchPlaceholder")}
@@ -52,6 +53,7 @@ export function Header() {
         <div className="flex items-center gap-3">
           <LanguageSwitcher className="hidden lg:inline-flex" />
           <LocaleLink
+            aria-label={t("nav.wishlist")}
             className="relative hidden h-11 w-11 items-center justify-center rounded-full border border-[var(--line)] bg-white/75 text-[var(--ink)] backdrop-blur transition hover:bg-white md:inline-flex"
             href="/wishlist"
             locale={locale}
@@ -64,6 +66,7 @@ export function Header() {
             ) : null}
           </LocaleLink>
           <LocaleLink
+            aria-label={t("nav.account")}
             className="hidden h-11 w-11 items-center justify-center rounded-full border border-[var(--line)] bg-white/75 text-[var(--ink)] backdrop-blur transition hover:bg-white md:inline-flex"
             href="/account"
             locale={locale}
@@ -75,6 +78,7 @@ export function Header() {
           <Sheet>
             <SheetTrigger asChild>
               <button
+                aria-label={t("common.openMenu")}
                 className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-[var(--line)] bg-white/75 text-[var(--ink)] backdrop-blur lg:hidden"
                 type="button"
               >
@@ -91,6 +95,7 @@ export function Header() {
                   <LanguageSwitcher />
                   <form action={`/${locale}/search`} className="space-y-2">
                     <input
+                      aria-label={t("common.search")}
                       className="h-12 w-full rounded-full border border-[var(--line)] bg-white/80 px-5 text-sm text-[var(--ink)] outline-none"
                       name="q"
                       placeholder={t("common.searchPlaceholder")}

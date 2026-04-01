@@ -1,6 +1,4 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { LocaleLink } from "@/components/shared/locale-link";
+import { AuthForm } from "@/components/forms/auth-form";
 import { resolveLocale } from "@/lib/request";
 
 export default async function SignInPage({
@@ -40,32 +38,7 @@ export default async function SignInPage({
         </section>
 
         <section className="surface-panel rounded-[40px] px-6 py-10 md:px-10">
-          <form className="space-y-5">
-            <div className="space-y-2">
-              <label className="text-sm font-semibold text-[var(--ink)]">
-                {locale === "zh-Hant" ? "電郵地址" : "Email address"}
-              </label>
-              <Input defaultValue="evelyn@private-mail.com" type="email" />
-            </div>
-            <div className="space-y-2">
-              <label className="text-sm font-semibold text-[var(--ink)]">
-                {locale === "zh-Hant" ? "密碼" : "Password"}
-              </label>
-              <Input defaultValue="Velora2026" type="password" />
-            </div>
-            <div className="grid gap-3 pt-3">
-              <Button asChild className="w-full">
-                <LocaleLink href="/account" locale={locale}>
-                  {locale === "zh-Hant" ? "登入" : "Continue"}
-                </LocaleLink>
-              </Button>
-              <Button asChild className="w-full" variant="secondary">
-                <LocaleLink href="/auth/sign-up" locale={locale}>
-                  {locale === "zh-Hant" ? "建立新帳戶" : "Create account"}
-                </LocaleLink>
-              </Button>
-            </div>
-          </form>
+          <AuthForm locale={locale} mode="sign-in" />
         </section>
       </div>
     </div>

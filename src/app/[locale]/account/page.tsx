@@ -8,8 +8,14 @@ import {
   recommendationSlugs,
   sampleOrders,
 } from "@/lib/catalog";
-import { formatCurrency, formatDate, getOrderStatusTone } from "@/lib/format";
+import {
+  formatCurrency,
+  formatDate,
+  formatOrderStatus,
+  getOrderStatusTone,
+} from "@/lib/format";
 import { resolveLocale } from "@/lib/request";
+import { isDefined } from "@/lib/utils";
 
 export default async function AccountPage({
   params,
@@ -20,7 +26,7 @@ export default async function AccountPage({
   const recommendations = recommendationSlugs
     .slice(0, 3)
     .map((slug) => getProductBySlug(slug))
-    .filter(Boolean);
+    .filter(isDefined);
 
   return (
     <div className="container-shell space-y-8 py-10">
@@ -93,7 +99,7 @@ export default async function AccountPage({
                   </div>
                   <div className="flex items-center gap-3">
                     <span className={`rounded-full px-3 py-1 text-xs font-semibold ${getOrderStatusTone(order.status)}`}>
-                      {order.status}
+                      {formatOrderStatus(order.status, locale)}
                     </span>
                     <p className="font-semibold text-[var(--ink)]">
                       {formatCurrency(order.total, locale)}

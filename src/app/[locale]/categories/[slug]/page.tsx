@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { CatalogToolbar } from "@/components/store/catalog-toolbar";
 import { ProductCard } from "@/components/store/product-card";
 import { categories, getCategoryBySlug, getProductsByCategory } from "@/lib/catalog";
-import { sortProducts } from "@/lib/format";
+import { filterProducts, sortProducts } from "@/lib/format";
 import { collections } from "@/lib/site";
 import { resolveLocale, type SearchParamsPromise } from "@/lib/request";
 import { deserialiseSearchValue } from "@/lib/utils";
@@ -21,12 +21,9 @@ export default async function CategoryPage({
   params: Promise<{ locale: string; slug: string }>;
   searchParams: SearchParamsPromise;
 }) {
-  const { slug } = await params;
-  const locale = await resolveLocale(
-    Promise.resolve({
-      locale: (await params).locale,
-    }),
-  );
+  const resolved = await params;
+  const { slug } = resolved;
+  const locale = await resolveLocale(Promise.resolve({ locale: resolved.locale }));
   const category = getCategoryBySlug(slug);
 
   if (!category) {
@@ -38,9 +35,9 @@ export default async function CategoryPage({
   const sort = deserialiseSearchValue(query.sort) || "featured";
 
   const filtered = sortProducts(
-    getProductsByCategory(category.slug).filter((product) =>
-      activeCollection ? product.collection === activeCollection : true,
-    ),
+    filterProducts(getProductsByCategory(category.slug), {
+      collection: activeCollection,
+    }),
     sort,
   );
 
