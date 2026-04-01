@@ -18,6 +18,7 @@ export const enMessages = {
     addToWishlist: "Save",
     removeFromWishlist: "Remove saved item",
     addedToCart: "Added to bag",
+    orderAddedToCart: "Order added to bag",
     remove: "Remove",
     saveForLater: "Save for later",
     quantity: "Quantity",
@@ -190,6 +191,7 @@ export const enMessages = {
     preferences: "Preferences",
     recentOrders: "Recent orders",
     membership: "Velora Circle",
+    buyAgain: "Buy again",
   },
   wishlistPage: {
     title: "Saved products",

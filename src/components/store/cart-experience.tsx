@@ -15,20 +15,9 @@ import {
   getPromotionByCode,
   getSelectionSummary,
 } from "@/lib/catalog";
+import { calculateOrderSummary, getShippingOptionContent } from "@/lib/commerce";
 import { formatCurrency } from "@/lib/format";
 import { useCommerceStore } from "@/lib/store";
-
-const shippingLabels = {
-  complimentary: { en: "Complimentary delivery", "zh-Hant": "免運配送" },
-  express: { en: "Express courier", "zh-Hant": "快遞配送" },
-  studio: { en: "Studio pickup", "zh-Hant": "工作室取貨" },
-} as const;
-
-const shippingFees = {
-  complimentary: 0,
-  express: 90,
-  studio: 0,
-} as const;
 
 export function CartExperience() {
   const { locale } = useLocaleContext();
@@ -45,32 +34,12 @@ export function CartExperience() {
   const setShippingMethod = useCommerceStore((state) => state.setShippingMethod);
   const [couponInput, setCouponInput] = useState(appliedCoupon ?? "");
 
-  const { subtotal, discount, shipping, total } = useMemo(() => {
-    const nextSubtotal = cart.reduce((sum, item) => {
-      const product = getProductBySlug(item.productSlug);
-      if (!product) {
-        return sum;
-      }
-      return sum + getProductPriceForSelection(product, item.selections) * item.quantity;
-    }, 0);
-
-    const promotion = appliedCoupon ? getPromotionByCode(appliedCoupon) : undefined;
-    const nextDiscount =
-      promotion && nextSubtotal >= promotion.minimumSpend
-        ? promotion.discountType === "fixed"
-          ? promotion.discountValue
-          : Math.round((nextSubtotal * promotion.discountValue) / 100)
-        : 0;
-
-    const nextShipping = shippingFees[shippingMethod];
-
-    return {
-      subtotal: nextSubtotal,
-      discount: nextDiscount,
-      shipping: nextShipping,
-      total: nextSubtotal - nextDiscount + nextShipping,
-    };
-  }, [appliedCoupon, cart, shippingMethod]);
+  const summary = useMemo(
+    () => calculateOrderSummary(cart, appliedCoupon, shippingMethod),
+    [appliedCoupon, cart, shippingMethod],
+  );
+  const selectedShipping = getShippingOptionContent(shippingMethod, locale);
+  const promotion = appliedCoupon ? getPromotionByCode(appliedCoupon) : undefined;
 
   if (cart.length === 0) {
     return (
@@ -245,9 +214,10 @@ export function CartExperience() {
                 {t("cartPage.shippingMethod")}
               </p>
               <div className="grid gap-2">
-                {(
-                  ["complimentary", "express", "studio"] as const
-                ).map((method) => (
+                {(["complimentary", "express", "studio"] as const).map((method) => {
+                  const option = getShippingOptionContent(method, locale);
+
+                  return (
                   <button
                     key={method}
                     className={`rounded-[20px] border px-4 py-3 text-left text-sm transition ${
@@ -260,37 +230,58 @@ export function CartExperience() {
                   >
                     <div className="flex items-center justify-between gap-3">
                       <span className="font-medium text-[var(--ink)]">
-                        {shippingLabels[method][locale]}
+                        {option.label}
                       </span>
                       <span className="text-slate-500">
-                        {shippingFees[method]
-                          ? formatCurrency(shippingFees[method], locale)
+                        {option.fee
+                          ? formatCurrency(option.fee, locale)
                           : t("common.free")}
                       </span>
                     </div>
+                    <p className="mt-2 text-xs leading-6 text-slate-500">{option.promise}</p>
                   </button>
-                ))}
+                  );
+                })}
               </div>
             </div>
 
             <div className="space-y-3 text-sm text-slate-600">
               <div className="flex items-center justify-between">
                 <span>{t("common.subtotal")}</span>
-                <span>{formatCurrency(subtotal, locale)}</span>
+                <span>{formatCurrency(summary.subtotal, locale)}</span>
               </div>
               <div className="flex items-center justify-between">
                 <span>{t("common.discount")}</span>
-                <span>{discount ? `-${formatCurrency(discount, locale)}` : "—"}</span>
+                <span>
+                  {summary.discount ? `-${formatCurrency(summary.discount, locale)}` : "—"}
+                </span>
               </div>
               <div className="flex items-center justify-between">
                 <span>{t("common.shipping")}</span>
-                <span>{shipping ? formatCurrency(shipping, locale) : "—"}</span>
+                <span>
+                  {summary.shipping ? formatCurrency(summary.shipping, locale) : "—"}
+                </span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span>{t("common.tax")}</span>
+                <span>{formatCurrency(summary.tax, locale)}</span>
               </div>
             </div>
 
             <div className="flex items-center justify-between border-t border-[var(--line)] pt-4 text-lg font-semibold text-[var(--ink)]">
               <span>{t("common.total")}</span>
-              <span>{formatCurrency(total, locale)}</span>
+              <span>{formatCurrency(summary.total, locale)}</span>
+            </div>
+
+            <div className="rounded-[24px] bg-[var(--surface-strong)] px-4 py-4">
+              <p className="text-sm font-semibold text-[var(--ink)]">{selectedShipping.label}</p>
+              <p className="mt-2 text-sm leading-7 text-slate-600">{selectedShipping.promise}</p>
+              <p className="mt-2 text-xs leading-6 text-slate-500">{selectedShipping.detail}</p>
+              {promotion ? (
+                <p className="mt-3 text-xs uppercase tracking-[0.14em] text-[var(--accent)]">
+                  {promotion.code}
+                </p>
+              ) : null}
             </div>
 
             <Button asChild className="w-full">

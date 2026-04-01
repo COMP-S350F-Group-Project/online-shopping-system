@@ -18,6 +18,7 @@ export const zhHantMessages = {
     addToWishlist: "收藏",
     removeFromWishlist: "取消收藏",
     addedToCart: "已加入購物袋",
+    orderAddedToCart: "已將訂單加入購物袋",
     remove: "移除",
     saveForLater: "稍後再買",
     quantity: "數量",
@@ -181,6 +182,7 @@ export const zhHantMessages = {
     preferences: "偏好設定",
     recentOrders: "最近訂單",
     membership: "Velora Circle 會員",
+    buyAgain: "再次購買",
   },
   wishlistPage: {
     title: "收藏清單",

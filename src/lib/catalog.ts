@@ -2415,8 +2415,18 @@ export const accountProfile = {
   name: "Evelyn Lau",
   email: "evelyn@private-mail.com",
   tier: lt("Circle Black", "Circle Black"),
+  memberSince: "2024-08-16T10:00:00+08:00",
   nextReward: lt("HK$340 away from complimentary same-day studio pickup.", "距離享有免費當日工作室取貨尚差 HK$340。"),
   defaultAddress: lt("Mid-Levels West, Hong Kong", "香港半山西"),
+  defaultPayment: lt("Visa ending 0488", "Visa 尾號 0488"),
+  servicePreference: lt(
+    "Weekday evening delivery with private pickup as backup.",
+    "偏好平日晚間送達，必要時改為到店取貨。",
+  ),
+  conciergeNote: lt(
+    "Preparing a workspace refresh for a quieter home office setup.",
+    "正規劃一套更安靜、更完整的居家工作配置。",
+  ),
 };
 
 export function getProductBySlug(slug: string) {

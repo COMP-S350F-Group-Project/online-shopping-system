@@ -4,6 +4,8 @@ export type LocalizedText = Record<Locale, string>;
 
 export type StockState = "in-stock" | "low" | "preorder";
 
+export type ShippingMethod = "complimentary" | "express" | "studio";
+
 export type VariantDisplay = "swatch" | "button";
 
 export type ProductVisualKind =
@@ -152,6 +154,16 @@ export type TrackingEvent = {
 
 export type OrderStatus = "processing" | "in-transit" | "delivered";
 
+export type PostalAddress = {
+  name: string;
+  line1: string;
+  line2?: string;
+  city: string;
+  region: string;
+  postcode: string;
+  country: string;
+};
+
 export type CustomerOrder = {
   id: string;
   number: string;
@@ -159,16 +171,8 @@ export type CustomerOrder = {
   status: OrderStatus;
   paymentMethod: string;
   trackingNumber: string;
-  shippingMethod: "complimentary" | "express" | "studio";
-  shippingAddress: {
-    name: string;
-    line1: string;
-    line2?: string;
-    city: string;
-    region: string;
-    postcode: string;
-    country: string;
-  };
+  shippingMethod: ShippingMethod;
+  shippingAddress: PostalAddress;
   items: OrderItem[];
   subtotal: number;
   discount: number;
@@ -176,6 +180,27 @@ export type CustomerOrder = {
   tax: number;
   total: number;
   timeline: TrackingEvent[];
+};
+
+export type CheckoutSnapshot = {
+  orderNumber: string;
+  placedAt: string;
+  contact: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+  };
+  shippingAddress: PostalAddress;
+  shippingMethod: ShippingMethod;
+  paymentLabel: string;
+  orderNotes?: string;
+  items: OrderItem[];
+  subtotal: number;
+  discount: number;
+  shipping: number;
+  tax: number;
+  total: number;
 };
 
 export type SupportArticle = {

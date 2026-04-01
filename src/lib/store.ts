@@ -6,9 +6,7 @@ import { createJSONStorage, persist } from "zustand/middleware";
 import { getPromotionByCode, initialCart, initialWishlist } from "@/lib/catalog";
 import { defaultLocale } from "@/lib/i18n";
 import { serialiseSelections } from "@/lib/utils";
-import type { CartItem, Locale } from "@/types";
-
-type ShippingMethod = "complimentary" | "express" | "studio";
+import type { CartItem, CheckoutSnapshot, Locale, ShippingMethod } from "@/types";
 
 type CommerceState = {
   cart: CartItem[];
@@ -17,6 +15,7 @@ type CommerceState = {
   shippingMethod: ShippingMethod;
   localePreference: Locale;
   lastOrderNumber?: string;
+  lastCheckout?: CheckoutSnapshot;
   addToCart: (item: CartItem) => void;
   updateQuantity: (item: CartItem, quantity: number) => void;
   removeFromCart: (item: CartItem) => void;
@@ -27,7 +26,7 @@ type CommerceState = {
   clearCoupon: () => void;
   setShippingMethod: (method: ShippingMethod) => void;
   setLocalePreference: (locale: Locale) => void;
-  completeCheckout: (orderNumber: string) => void;
+  completeCheckout: (checkout: CheckoutSnapshot) => void;
 };
 
 function isSameLineItem(a: CartItem, b: CartItem) {
@@ -46,6 +45,7 @@ export const useCommerceStore = create<CommerceState>()(
       shippingMethod: "complimentary",
       localePreference: defaultLocale,
       lastOrderNumber: undefined,
+      lastCheckout: undefined,
       addToCart: (item) =>
         set((state) => {
           const existing = state.cart.find((entry) => isSameLineItem(entry, item));
@@ -111,11 +111,12 @@ export const useCommerceStore = create<CommerceState>()(
       clearCoupon: () => set({ appliedCoupon: undefined }),
       setShippingMethod: (shippingMethod) => set({ shippingMethod }),
       setLocalePreference: (localePreference) => set({ localePreference }),
-      completeCheckout: (orderNumber) =>
+      completeCheckout: (checkout) =>
         set({
           cart: [],
           appliedCoupon: undefined,
-          lastOrderNumber: orderNumber,
+          lastOrderNumber: checkout.orderNumber,
+          lastCheckout: checkout,
         }),
     }),
     {
@@ -128,6 +129,7 @@ export const useCommerceStore = create<CommerceState>()(
         shippingMethod: state.shippingMethod,
         localePreference: state.localePreference,
         lastOrderNumber: state.lastOrderNumber,
+        lastCheckout: state.lastCheckout,
       }),
     },
   ),

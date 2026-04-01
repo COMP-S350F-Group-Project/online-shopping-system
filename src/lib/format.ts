@@ -118,3 +118,25 @@ export function formatOrderStatus(status: OrderStatus, locale: Locale) {
 
   return labels[status][locale];
 }
+
+export function formatShippingMethod(
+  shippingMethod: CustomerOrder["shippingMethod"],
+  locale: Locale,
+) {
+  const labels = {
+    complimentary: {
+      en: "Complimentary delivery",
+      "zh-Hant": "免運配送",
+    },
+    express: {
+      en: "Express courier",
+      "zh-Hant": "快遞配送",
+    },
+    studio: {
+      en: "Studio pickup",
+      "zh-Hant": "工作室取貨",
+    },
+  } as const;
+
+  return labels[shippingMethod][locale];
+}
